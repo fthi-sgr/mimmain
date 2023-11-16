@@ -27,9 +27,22 @@ class CariController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ad' => 'required',
-            'soyad' => 'required',
-            'telefon' => 'required',
+            
+            'cari_kodu' => 'required',
+            'cari_turu' => 'required',
+            'cari_adi' => 'required',
+            'cari_tipi' => 'required',
+            'kisa_ad' => 'required',
+            'car_etiket' => 'required',
+            'vergi_no' => 'required',
+            'vergi_dairesi' => 'required',
+            'yetkili' => 'required',
+            'yetkili_tel' => 'required',
+            'email' => 'required',
+            'vade_gunu' => 'required',
+            'iskonto' => 'required',
+            'referans' => 'required',
+            'aciklama' => 'required',
         ]);
 
         Cari::create($request->all());
@@ -51,9 +64,22 @@ class CariController extends Controller
     public function update(Request $request, Cari $cari)
     {
         $request->validate([
-            'ad' => 'required',
-            'soyad' => 'required',
-            'telefon' => 'required',
+           
+            'cari_kodu' => 'required',
+            'cari_turu' => 'required',
+            'cari_adi' => 'required',
+            'cari_tipi' => 'required',
+            'kisa_ad' => 'required',
+            'car_etiket' => 'required',
+            'vergi_no' => 'required',
+            'vergi_dairesi' => 'required',
+            'yetkili' => 'required',
+            'yetkili_tel' => 'required',
+            'email' => 'required',
+            'vade_gunu' => 'required',
+            'iskonto' => 'required',
+            'referans' => 'required',
+            'aciklama' => 'required',
         ]);
 
         $cari->update($request->all());
