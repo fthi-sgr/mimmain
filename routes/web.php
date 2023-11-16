@@ -18,7 +18,7 @@ use App\Http\Controllers\CariController;
 
 Route::get('/caris', [CariController::class, 'index'])->name('caris.index');
 Route::get('/caris/create', [CariController::class, 'create'])->name('caris.create');
-Route::post('/caris', 'Caricontroller@store')->name('caris.store');
+Route::post('/caris', [CariController::class, 'store'])->name('caris.store');
 Route::get('/caris/{cari}', [CariController::class, 'show'])->name('caris.show');
 Route::get('/caris/{cari}/edit', [CariController::class, 'edit'])->name('caris.edit');
 //Route::put('/caris/{id}', [CariController::class, 'update'])->name('caris.update');

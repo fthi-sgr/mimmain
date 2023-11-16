@@ -33,7 +33,7 @@ class CariController extends Controller
             'cari_adi' => 'required',
             'cari_tipi' => 'required',
             'kisa_ad' => 'required',
-            'car_etiket' => 'required',
+            'cari_etiket' => 'required',
             'vergi_no' => 'required',
             'vergi_dairesi' => 'required',
             'yetkili' => 'required',
@@ -53,6 +53,7 @@ class CariController extends Controller
 
     public function show(Cari $cari)
     {
+        $cari=Car::findOrfail($id);
         return view('caris.show', compact('cari'));
     }
 
