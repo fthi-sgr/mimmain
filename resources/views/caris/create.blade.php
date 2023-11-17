@@ -10,27 +10,39 @@
           
             <div class="form-group">
                 <label for="cari_kodu">Cari Kodu:</label>
-                <input type="number" class="form-control" id="cari_kodu" name="cari_kodu" required>
+                <input type="text" class="form-control" id="cari_kodu" name="cari_kodu" required>
+                <span class="text-danger">{{ $errors->first('name') }}</span>
+
             </div>
             <div class="form-group">
                 <label for="cari_turu">Cari Türü:</label>
                 <input type="text" class="form-control" id="cari_turu" name="cari_turu" required>
+                <span class="text-danger">{{ $errors->first('name') }}</span>
+
             </div>
             <div class="form-group">
                 <label for="cari_adi">Cari Adı:</label>
                 <input type="text" class="form-control" id="cari_adi" name="cari_adi" required>
+                <span class="text-danger">{{ $errors->first('name') }}</span>
+
             </div>
             <div class="form-group">
                 <label for="cari_tipi">Cari Tipi:</label>
                 <input type="text" class="form-control" id="cari_tipi" name="cari_tipi" required>
+                <span class="text-danger">{{ $errors->first('name') }}</span>
+
             </div>
             <div class="form-group">
                 <label for="kisa_ad">Kısa Ad:</label>
                 <input type="text" class="form-control" id="kisa_ad" name="kisa_ad" required>
+                <span class="text-danger">{{ $errors->first('name') }}</span>
+
             </div>
             <div class="form-group">
                 <label for="cari_etiket">Etiket:</label>
                 <input type="text" class="form-control" id="cari_etiket" name="cari_etiket" required>
+                <span class="text-danger">{{ $errors->first('name') }}</span>
+
             </div>            
             <div class="form-group">
                 <label for="vergi_no">Vergi Numarası:</label>

@@ -14,6 +14,7 @@
                     <th>Cari Adı</th>
                     <th>Cari Tipi</th>
                     <th>Kısa Ad</th>
+                    <th>Etiket</th>
                     <th>İşlemler</th>
                 </tr>
             </thead>
@@ -23,25 +24,28 @@
                         <td>{{ $cari->cari_id }}</td>
                         <td>{{ $cari->cari_kodu }}</td>
                         <td>{{ $cari->cari_adi }}</td>
-                        <td>{{ $cari->cari_tipi}}</td>
+                        <td>{{ $cari->cari_tipi}}</td> 
                         <td>{{ $cari->kisa_ad}}</td>
+                        <td>{{ $cari->cari_etiket}}</td>
+
                         
-                        
-    <div class="dropdown">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            İşlemler
-        </button>
-        <div class="dropdown-menu" aria-labelledby="actionDropdown">
-            <a class="dropdown-item" href="{{ route('caris.show', $cari->id) }}">Ayrıntılar</a>
-            <a class="dropdown-item" href="{{ route('caris.edit', $cari->id) }}">Düzenle</a>
-            <form action="{{ route('caris.destroy', $cari->id) }}" method="POST" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="dropdown-item" onclick="return confirm('Silmek istediğinizden emin misiniz?')">Sil</button>
-            </form>
-        </div>
-    </div>
-</td>
+                        <td>                  
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    İşlemler
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="actionDropdown">
+                                    <a class="dropdown-item" href="{{ route('caris.show',[$cari->cari_id]) }}">Ayrıntılar</a>
+                                
+                                    <a class="dropdown-item" href="{{ route('caris.edit', [$cari->cari_id]) }}">Düzenle</a>
+
+                                    <a class="dropdown-item" href="{{ route('caris.destroy', [$cari->cari_id]) }}" onclick="return confirm('Silmek istediğinizden emin misiniz?')">Sil</a>
+                                
+                                </div>
+                            
+                            </div>
+                         </td>
+
                     </tr>
                 @endforeach
             </tbody>

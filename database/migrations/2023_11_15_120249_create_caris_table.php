@@ -30,7 +30,7 @@ class CreateCarisTable extends Migration
             $table->string('referans');
             $table->text('aciklama');
             $table->timestamps();
-            $table->string('_token')->default(''); // varsayılan değeri boş dizgi olarak belirtildi
+           
         });
     }
 

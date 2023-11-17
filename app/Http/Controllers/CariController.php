@@ -21,45 +21,47 @@ class CariController extends Controller
 
     public function create()
     {
+        
         return view('caris.create');
     }
 
     public function store(Request $request)
     {
-        //Veri doğrulama kuralları 
-        $request->validate([
-            
-            'cari_kodu' => 'required|string|max:50',
-            'cari_turu' => 'required|string|max:50',
-            'cari_adi' => 'required|string|max:255',
-            'cari_tipi' => 'required|string|max:50',
-            'kisa_ad' => 'required|string|max:50',
-            'cari_etiket' => 'required|string|max:50',
-            'vergi_no' => 'required|string|max:20',
-            'vergi_dairesi' => 'required|string|max:50',
-            'yetkili' => 'required|string|max:100',
-            'yetkili_tel' => 'required|string|max:20',
-            'email' => 'required|email|max:255',
-            'vade_gunu' => 'required|integer',
-            'iskonto' => 'required|numeric|between:0,999.99',
-            'referans' => 'required|string|max:255',
-            'aciklama' => 'required|string',
-        ]);
+       
+      
+       try{ 
 
-        try{
-            Cari::create($request->all());
+        $cari = new Cari();
+        $cari->cari_kodu = $request->cari_kodu;
+        $cari->cari_turu = $request->cari_turu;
+        $cari->cari_adi = $request->cari_adi;
+        $cari->cari_tipi = $request->cari_tipi;
+        $cari->kisa_ad = $request->kisa_ad;
+        $cari->cari_etiket = $request->cari_etiket;
+        $cari->vergi_no = $request->vergi_no;
+        $cari->vergi_dairesi = $request->vergi_dairesi;
+        $cari->yetkili = $request->yetkili;
+        $cari->yetkili_tel = $request->yetkili_tel;
+        $cari->email = $request->email;
+        $cari->vade_gunu = $request->vade_gunu;
+        $cari->iskonto = $request->iskonto;
+        $cari->referans = $request->referans;
+        $cari->aciklama = $request->aciklama;
+        $cari->save();
 
-            return redirect()->route('caris.index')
-                ->with('success', 'Cari başarıyla eklendi.');
-        }catch(\exception $e){
-            \log::error('Cari eklenirken hata oluştu'.$e->getMessage());
-            return redirect()->back()->with('error','cari eklenirken bir hata oluştu.');
+      
 
-        }
+        return redirect()->route('caris.index');
+    }catch(\Exception $e){
+        dd($e->getMessage());
+
+        return redirect()->back()->with('error', 'Cari eklenirken bir hata oluştu.');
+    }
     }
 
     public function show(Cari $cari)
     {
+   
         return view('caris.show', compact('cari'));
     }
 
@@ -67,29 +69,26 @@ class CariController extends Controller
     {
         return view('caris.edit', compact('cari'));
     }
-
     public function update(Request $request, Cari $cari)
     {
         try {
-            $request->validate([
-                'cari_kodu' => 'required|string|max:50',
-                'cari_turu' => 'required|string|max:50',
-                'cari_adi' => 'required|string|max:255',
-                'cari_tipi' => 'required|string|max:50',
-                'kisa_ad' => 'required|string|max:50',
-                'cari_etiket' => 'required|string|max:50',
-                'vergi_no' => 'required|string|max:20',
-                'vergi_dairesi' => 'required|string|max:50',
-                'yetkili' => 'required|string|max:100',
-                'yetkili_tel' => 'required|string|max:20',
-                'email' => 'required|email|max:255',
-                'vade_gunu' => 'required|integer',
-                'iskonto' => 'required|numeric|between:0,999.99',
-                'referans' => 'required|string|max:255',
-                'aciklama' => 'required|string',
-            ]);
-    
-            $cari->update($request->all());
+            $cari = new Cari();
+            $cari->cari_kodu = $request->cari_kodu;
+            $cari->cari_turu = $request->cari_turu;
+            $cari->cari_adi = $request->cari_adi;
+            $cari->cari_tipi = $request->cari_tipi;
+            $cari->kisa_ad = $request->kisa_ad;
+            $cari->cari_etiket = $request->cari_etiket;
+            $cari->vergi_no = $request->vergi_no;
+            $cari->vergi_dairesi = $request->vergi_dairesi;
+            $cari->yetkili = $request->yetkili;
+            $cari->yetkili_tel = $request->yetkili_tel;
+            $cari->email = $request->email;
+            $cari->vade_gunu = $request->vade_gunu;
+            $cari->iskonto = $request->iskonto;
+            $cari->referans = $request->referans;
+            $cari->aciklama = $request->aciklama;
+            $cari->save();
     
             return redirect()->route('caris.index')->with('success', 'Cari başarıyla güncellendi.');
         } catch (ModelNotFoundException $e) {
@@ -100,11 +99,9 @@ class CariController extends Controller
             return redirect()->back()->with('error', 'Cari güncellenirken bir hata oluştu.');
         }
     }
-
     public function destroy(Cari $cari)
     {
         $cari->delete();
-
         return redirect()->route('caris.index')
             ->with('success', 'Cari başarıyla silindi.');
     }
