@@ -26,9 +26,8 @@ class CariController extends Controller
 
     public function store(Request $request)
     {
-        //Veri doğrulama kuralları 
+    try {
         $request->validate([
-            
             'cari_kodu' => 'required|string|max:50',
             'cari_turu' => 'required|string|max:50',
             'cari_adi' => 'required|string|max:255',
@@ -46,20 +45,23 @@ class CariController extends Controller
             'aciklama' => 'required|string',
         ]);
 
-        try{
-            Cari::create($request->all());
+        Cari::create($request->all());
 
-            return redirect()->route('caris.index')
-                ->with('success', 'Cari başarıyla eklendi.');
-        }catch(\exception $e){
-            \log::error('Cari eklenirken hata oluştu'.$e->getMessage());
-            return redirect()->back()->with('error','cari eklenirken bir hata oluştu.');
+        return redirect()->route('caris.index')->with('success', 'Cari başarıyla eklendi.');
+    } catch (\Exception $e) {
+        // Hata ayıklama için
+        dd($e->getMessage());
+        // veya loglama için
+        // Log::error($e->getMessage());
 
-        }
+        return redirect()->back()->with('error', 'Cari eklenirken bir hata oluştu.');
+    }
     }
 
     public function show(Cari $cari)
     {
+   
+    
         return view('caris.show', compact('cari'));
     }
 

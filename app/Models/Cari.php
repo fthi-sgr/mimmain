@@ -23,7 +23,7 @@ class Cari extends Model
         'vade_gunu',
         'iskonto', 
         'referans', 
-        'aciklama',
+        'aciklama' 
         
     ];
 }
