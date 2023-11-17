@@ -9,7 +9,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Cari İd</th>
+                    <th>ID</th>
                     <th>Cari Kodu</th>
                     <th>Cari Adı</th>
                     <th>Cari Tipi</th>

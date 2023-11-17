@@ -41,12 +41,12 @@
                 <input type="text" class="form-control" id="vergi_dairesi" name="vergi_dairesi" required>
             </div>
             <div class="form-group">
-                <label for=">yetkili ">Yetkili:</label>
-                <input type="text" class="form-control" id=">yetkili " name=">yetkili " required>
+                <label for="yetkili">Yetkili:</label>
+                <input type="text" class="form-control" id="yetkili" name="yetkili" required>
             </div>
             <div class="form-group">
                 <label for="yetkili_tel">Yetkili Tel:</label>
-                <input type="tel" class="form-control" id="yetkili_tel" name="yetkili_tel" placeholder= "5**-***-****" pattern ="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                <input type="tel" class="form-control" id="yetkili_tel" name="yetkili_tel" placeholder="5**-***-****" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
             </div>
             <div class="form-group">
                 <label for="email">E-Mail:</label>
@@ -58,7 +58,7 @@
             </div>
             <div class="form-group">
                 <label for="iskonto">İskonto:</label>
-                <input type="text" class="form-control" id="iskonto" name="iskonto" required>
+                <input type="number" class="form-control" id="iskonto" name="iskonto" required>
             </div>
             <div class="form-group">
                 <label for="referans">Referans:</label>

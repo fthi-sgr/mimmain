@@ -25,10 +25,10 @@ class CreateCarisTable extends Migration
             $table->string('yetkili');
             $table->string('yetkili_tel');
             $table->string('email');
-            $table->string('vade_gunu');
-            $table->string('iskonto');
+            $table->integer('vade_gunu');
+            $table->decimal('iskonto', 5, 2);
             $table->string('referans');
-            $table->string('aciklama');
+            $table->text('aciklama');
             $table->timestamps();
             $table->string('_token')->default(''); // varsayılan değeri boş dizgi olarak belirtildi
         });
