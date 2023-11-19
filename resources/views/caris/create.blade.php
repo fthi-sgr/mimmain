@@ -58,7 +58,7 @@
             </div>
             <div class="form-group">
                 <label for="yetkili_tel">Yetkili Tel:</label>
-                <input type="tel" class="form-control" id="yetkili_tel" name="yetkili_tel" placeholder="5**-***-****" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                <input type="tel" class="form-control" id="yetkili_tel" name="yetkili_tel" placeholder="5**-***-****" required>
             </div>
             <div class="form-group">
                 <label for="email">E-Mail:</label>

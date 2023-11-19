@@ -13,7 +13,13 @@ class CreateCarisTable extends Migration
     public function up()
     {
         Schema::create('caris', function (Blueprint $table) {
-            $table->id('cari_id'); // otomatik artam ID sütunu
+
+            // $table->bigIncrements('id');
+            // $table->unsignedBigInteger('company_id')->comment('hangi firmaya ait olduğunu belirtmek için kullanılacak')->nullable();
+            
+
+
+            $table->id('id'); // otomatik artam ID sütunu
             $table->string('cari_kodu');
             $table->string('cari_turu');
             $table->string('cari_adi');
@@ -26,7 +32,7 @@ class CreateCarisTable extends Migration
             $table->string('yetkili_tel');
             $table->string('email');
             $table->integer('vade_gunu');
-            $table->decimal('iskonto', 5, 2);
+            $table->decimal('iskonto', 3, 1);
             $table->string('referans');
             $table->text('aciklama');
             $table->timestamps();

@@ -5,12 +5,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+
     <div class="container">
         <h2>Cari Detayları</h2>
         <table class="table">
             <tr>
                 <th>ID</th>
-                <td>{{ $cari->cari_id }}</td>
+                <td>{{ $cari->id }}</td>
             </tr>
             <tr>
                 <th>Cari Kodu</th>
@@ -42,7 +44,7 @@
             </tr>
             <tr>
                 <th>Vergi Dairesi</th>
-                <td>{{ $cari->cari_dairesi }}</td>
+                <td>{{ $cari->vergi_dairesi }}</td>
             </tr>
             <tr>
                 <th>Yetkili</th>
@@ -73,7 +75,7 @@
                 <td>{{ $cari->aciklama }}</td>
             </tr>
         </table>
-        <a href="{{ route('caris.edit', $cari->id) }}" class="btn btn-warning mt-2">Düzenle</a>
-        <a href="{{ route('caris.index', $cari->id) }}" class="btn btn-warning mt-2">Cariler</a>
+        <a href="{{ route('caris.edit', [ $cari->id ]) }}" class="btn btn-warning mt-2">Düzenle</a>
+        <a href="{{ route('caris.index',[ $cari->id ]) }}" class="btn btn-warning mt-2">Cariler</a>
     </div>
 @endsection
