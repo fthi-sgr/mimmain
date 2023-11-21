@@ -10,13 +10,9 @@
  
         <form action="{{ route('caris.update', [ $cari->id ]) }}" method="POST">
             @csrf
-<<<<<<< Updated upstream
+
            
-                  
-=======
-            @method('PUT')
-            <input type="hidden" name="id" value="{{ $cari->id }}">
->>>>>>> Stashed changes
+
             <div class="form-group">
                 <label for="cari_kodu">Cari Kodu:</label>
                 <input type="text" class="form-control" id="cari_kodu" name="cari_kodu" value="{{ old('cari_kodu', $cari->cari_kodu)  }}"  required>

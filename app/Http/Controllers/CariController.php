@@ -81,7 +81,7 @@ class CariController extends Controller
     }
     public function update(Request $request)
     {
-<<<<<<< Updated upstream
+
         $id = $request->id;
         // try {
             $cari =  Cari::where('id', $id)->first();
@@ -103,28 +103,7 @@ class CariController extends Controller
             $cari->aciklama = $request->aciklama;
             $cari->save();
         
-=======
-        try {
-            $cari->update([
-           
-            'cari_kodu' => $request->cari_kodu,
-            'cari_turu' => $request->cari_turu,
-            'cari_adi' => $request->cari_adi,
-            'cari_tipi' => $request->cari_tipi,
-            'kisa_ad' => $request->kisa_ad,
-            'cari_etiket' => $request->cari_etiket,
-            'vergi_no' => $request->vergi_no,
-            'vergi_dairesi' => $request->vergi_dairesi,
-            'yetkili' => $request->yetkili,
-            'yetkili_tel' => $request->yetkili_tel,
-            'email' => $request->email,
-            'vade_gunu' => $request->vade_gunu,
-            'iskonto' => $request->iskonto,
-            'referans' => $request->referans,
-            'aciklama' => $request->aciklama,
-           
-            ]);
->>>>>>> Stashed changes
+
     
             return redirect()->route('caris.index')->with('success', 'Cari başarıyla güncellendi.');
         // } catch (ModelNotFoundException $e) {
