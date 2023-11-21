@@ -13,13 +13,14 @@
         <table class="table" id="tablo">
             <thead>
                 <tr>
-                    <th>Cari ID</th>
+                    <th> ID</th>
                     <th>Cari Kodu</th>
                     <th>Cari Adı</th>
                     <th>Cari Tipi</th>
                     <th>Kısa Ad</th>
                     <th>Etiket</th>
-                    <th>vergi numarası</th>
+                    <th>Vergi Numarası</th>
+                    
                     <th>İşlemler</th>
                 </tr>
             </thead>
@@ -33,9 +34,8 @@
                         <td>{{ $cari->cari_adi }}</td>
                         <td>{{ $cari->cari_tipi}}</td> 
                         <td>{{ $cari->kisa_ad}}</td>
-                        <td>{{ $cari->cari_etiket}}</td>
-
-                        <td>{{ $cari->vergi_no }}</td>
+                        <td>{{ $cari->cari_etiket }}</td>
+                        <td>{{$cari->vergi_no}}</td>
 
                         
                         <td>                  
@@ -60,12 +60,4 @@
             </tbody>
         </table>
     </div>
-
-
-  
-
-
-
-
-
 @endsection
