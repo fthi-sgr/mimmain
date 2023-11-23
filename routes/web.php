@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 // routes/web.php
 
 use App\Http\Controllers\CariController;
-
+Route::get('/tema',function(){
+    return view('tema');
+});
 // Route::get('/carislist', [CariController::class, 'index'])->name('caris.index');
 Route::get('/caris/create', [CariController::class, 'create'])->name('caris.create');
 Route::post('/cariadd', [CariController::class, 'store'])->name('caris.store');
@@ -46,3 +48,12 @@ Route::get('/', [CariController::class, 'index'])->name('caris.index');
 //     });
 
 // });
+
+
+
+//  Route::prefix('/caris')->group(function () {
+//     Route::get('/', [CariController::class, 'index'])->name('caris.index');
+//     Route::get('/create', [CariController::class, 'create'])->name('caris.create');
+//     Route::post('/add', [CariController::class, 'store'])->name('caris.store');
+//  });
+

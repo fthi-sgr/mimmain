@@ -1,9 +1,5 @@
 <?php
-
 // database/migrations/xxxx_xx_xx_create_caris_table.php
-
-// database/migrations/xxxx_xx_xx_create_caris_table.php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,8 +13,6 @@ class CreateCarisTable extends Migration
             // $table->bigIncrements('id');
             // $table->unsignedBigInteger('company_id')->comment('hangi firmaya ait olduğunu belirtmek için kullanılacak')->nullable();
             
-
-
             $table->id('id'); // otomatik artam ID sütunu
             $table->string('cari_kodu');
             $table->string('cari_turu');

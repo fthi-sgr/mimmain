@@ -59,7 +59,7 @@
             </div>
             <div class="form-group">
                 <label for="yetkili">Yetkili:</label>
-                <input type="text" class="form-control" id="yetkili" name="yetkili" value="{{ $cari->yetkili }}" required>
+                <input type="text" class="form-control" id="yetkili" name="yetkili" value="{{ $cari->yetkili }}" >
             </div>
             <div class="form-group">
                 <label for="yetkili_tel">Yetkili Tel:</label>

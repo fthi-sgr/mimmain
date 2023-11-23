@@ -13,6 +13,7 @@ use App\Models\Cari; // Cari modelini lullancağımızı belirtiyoruz
 
 class CariController extends Controller
 {
+
     public function index()
     {
         $caris = Cari::all(); // tüm cari kayıtlarını al
