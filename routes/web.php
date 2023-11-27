@@ -26,7 +26,7 @@ Route::get('/',  [AnasayfaController::class, 'index'])->name('anasayfa.index');
 
 //Cari Route
 
-Route::get('/', [CariController::class, 'index'])->name('caris.index');
+Route::get('/carilist', [CariController::class, 'index'])->name('caris.index');
 // Route::get('/carislist', [CariController::class, 'index'])->name('caris.index');
 Route::get('/caris/create', [CariController::class, 'create'])->name('caris.create');
 Route::post('/cariadd', [CariController::class, 'store'])->name('caris.store');

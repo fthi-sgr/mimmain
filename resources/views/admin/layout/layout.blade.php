@@ -20,11 +20,6 @@
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/c3/c3.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/toastr/toastr.min.cs') }}s">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/jvectormap/jquery-jvectormap-2.0.3.min.css') }}"/>
-
-
-
-
-
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
