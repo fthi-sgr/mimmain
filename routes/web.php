@@ -15,9 +15,18 @@ use Illuminate\Support\Facades\Route;
 // routes/web.php
 
 use App\Http\Controllers\CariController;
-Route::get('/tema',function(){
-    return view('tema');
-});
+use App\Http\Controllers\AnasayfaController;
+use App\Http\Controllers\AppsController;
+use App\Http\Controllers\ElementsController;
+use App\Http\Controllers\FormsController;
+use App\Http\Controllers\PagesController;
+
+//Anasayfa
+Route::get('/',  [AnasayfaController::class, 'index'])->name('anasayfa.index');
+
+//Cari Route
+
+Route::get('/', [CariController::class, 'index'])->name('caris.index');
 // Route::get('/carislist', [CariController::class, 'index'])->name('caris.index');
 Route::get('/caris/create', [CariController::class, 'create'])->name('caris.create');
 Route::post('/cariadd', [CariController::class, 'store'])->name('caris.store');
@@ -26,8 +35,27 @@ Route::get('/caris/{id}/edit', [CariController::class, 'edit'])->name('caris.edi
 Route::post('/caris/update/{id}', [CariController::class, 'update'])->name('caris.update');
 Route::delete('/caris/{id}', [CariController::class, 'destroy'])->name('caris.destroy');
 
+/*Apps*/
+Route::get('/apps/inbox',[AppsController::class,'inbox'])->name('apps.inbox');
 
-Route::get('/', [CariController::class, 'index'])->name('caris.index');
+
+/*elements*/
+Route::get('/elements/buttons',[ElementsController::class,'buttons'])->name('elements.buttons');
+
+
+
+/* Form elements*/
+Route::get('/forms/validation',[FormsController::class,'validation'])->name('forms.validation');
+
+
+/*extra pages*/
+Route::get('pages/settings',[PagesController::class,'settings'])->name('pages.settings');
+
+
+
+
+
+
 
 
 
