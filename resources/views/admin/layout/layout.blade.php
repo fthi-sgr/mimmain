@@ -31,7 +31,7 @@
 
 @yield('css')
 
-
+</head>
 <body>
     
 <div id="body" class="theme-cyan">
@@ -104,9 +104,7 @@
 <script src="{{ asset('admin/assets/bundles/apexcharts.bundle.js') }}"></script>
 <script src="{{ asset('admin/assets/bundles/jvectormap.bundle.js') }}"></script>
 <script src="{{ asset('admin/assets/vendor/toastr/toastr.js') }}"></script>
-
-
-
+<!--  --> 
 <script src="{{asset('admin/assets/bundles/datatablescripts.bundle.js')}}"></script>
 <script src="{{asset('admin/assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js')}}"></script>
 <script src="{{asset('admin/assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js')}}"></script>
@@ -118,7 +116,8 @@
 
 <!-- Project core js file minify with grunt --> 
 <script src="{{ asset('admin/assets/bundles/mainscripts.bundle.js') }}"></script>
-<script src="../js/index.js"></script>
+<script src="{{ asset('admin/assets/js/index.js')}}"></script>
+
 
 
 @yield('js')

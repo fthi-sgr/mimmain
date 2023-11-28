@@ -1,8 +1,13 @@
 <!-- resources/views/caris/show.blade.php -->
-<!-- resources/views/caris/show.blade.php -->
+@extends('admin.layout.layout')
 
-<!-- resources/views/caris/show.blade.php -->
-@extends('layouts.app')
+@section('title')
+
+@endsection
+
+@section('css')
+
+@endsection
 
 @section('content')
 
