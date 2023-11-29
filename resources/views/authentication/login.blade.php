@@ -1,39 +1,37 @@
-@extends('layout.authentication')
+@extends('admin.layout.authentication')
 @section('title', 'Login')
 
-
 @section('content')
-
     <div class="auth_brand">
-        <a class="navbar-brand" href="#"><img src="{{ asset('assets/images/icon.svg') }}" width="50" class="d-inline-block align-top mr-2" alt="">Mooli</a>                                                
+        <a class="navbar-brand" href="#"><img src="{{ asset('assets/images/icon.svg') }}" width="50" class="d-inline-block align-top mr-2" alt="">Mooli</a>
     </div>
     <div class="card">
         <div class="header">
             <p class="lead">Login to your account</p>
         </div>
         <div class="body">
-            <form class="form-auth-small" action="index.html">
+            <form method="POST" class="form-auth-small" action="{{ route('login.custom') }}">
+                @csrf <!-- CSRF koruması için gerekli -->
                 <div class="form-group c_form_group">
                     <label>Email</label>
-                    <input type="email" class="form-control" placeholder="Enter your email address">
+                    <input type="email" class="form-control" placeholder="Mail adresinizi giriniz!" name="email" required autofocus>
                 </div>
                 <div class="form-group c_form_group">
                     <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Enter your password">
+                    <input type="password" class="form-control" placeholder="Şifrenizi giriniz!" name="password" required>
                 </div>
                 <div class="form-group clearfix">
                     <label class="fancy-checkbox element-left">
                         <input type="checkbox">
                         <span>Remember me</span>
-                    </label>								
+                    </label>
                 </div>
-                <a class="btn btn-dark btn-lg btn-block" href="{{route('dashboard.index')}}">LOGIN</a>
+                <button type="submit" class="btn btn-dark btn-lg btn-block">LOGIN</button>
                 <div class="bottom">
-                    <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="{{route('authentication.forgotpassword')}}">Forgot password?</a></span>
-                    <span>Don't have an account? <a href="{{route('authentication.register')}}">Register</a></span>
+
+                    <span>Don't have an account? <a href="{{ route('authentication.register') }}">Register</a></span>
                 </div>
             </form>
         </div>
     </div>
-
 @stop

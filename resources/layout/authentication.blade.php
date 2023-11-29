@@ -11,14 +11,14 @@
     @yield('meta')
 
     @stack('before-styles')
-    <link rel="stylesheet" href="{{ asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/assets/vendor/animate-css/vivify.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/animate-css/vivify.min.css') }}">
     @stack('after-styles')
 
-    @if (trim($__env->yieldContent('page-styles')))
+    @if (trim($__env->yieldContent('page-styles')))    
         @yield('page-styles')
-    @endif
+    @endif    
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/mooli.min.css') }}">
 </head>
@@ -39,18 +39,18 @@
             <div class="line"></div>
         </div>
     </div>
-
+    
 </div>
 
 <!-- Scripts -->
 @stack('before-scripts')
-<script src="{{ asset('admin/assets/bundles/libscripts.bundle.js') }}"></script>
-<script src="{{ asset('admin/assets/bundles/vendorscripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}"></script>
 @stack('after-scripts')
 
 @if (trim($__env->yieldContent('page-script')))
     @yield('page-script')
 @endif
-
+    
 </body>
 </html>

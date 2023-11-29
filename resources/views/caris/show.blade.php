@@ -1,11 +1,11 @@
-<!-- resources/views/caris/show.blade.php -->
 @extends('admin.layout.layout')
 
 @section('title')
-
+Cari listesi
 @endsection
 
 @section('css')
+<!-- DataTables CSS ve JavaScript dosyaları -->
 
 @endsection
 
@@ -13,8 +13,9 @@
 
 
     <div class="container">
-        <h2>Cari Detayları</h2>
-        <table class="table">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover dataTable js-exportable">
+
             <tr>
                 <th>ID</th>
                 <td>{{ $cari->id }}</td>
@@ -80,7 +81,13 @@
                 <td>{{ $cari->aciklama }}</td>
             </tr>
         </table>
-        <a href="{{ route('caris.edit', [ $cari->id ]) }}" class="btn btn-warning mt-2">Düzenle</a>
-        <a href="{{ route('caris.index',[ $cari->id ]) }}" class="btn btn-warning mt-2">Cariler</a>
+        </div>
+        <a href="{{ route('caris.edit', [ $cari->id ]) }}" class="btn btn-primary mb-4">Düzenle</a>
+        <a href="{{ route('caris.index',[ $cari->id ]) }}" class="btn btn-primary mb-4">Cariler</a>
     </div>
+@endsection
+@section('js')
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<script src="{{ asset('admin/assets/js/pages/tables/jquery-datatable.js')}}"></script>
 @endsection

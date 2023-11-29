@@ -21,11 +21,12 @@
                             <li><a href="page-login.html"><i class="fa fa-power-off"></i>Oturumu Kapat</a></li>
                         </ul>
                     </div>
-                </div>  
+                </div>
                 <nav id="left-sidebar-nav" class="sidebar-nav">
                     <ul id="main-menu" class="metismenu animation-li-delay">
                         <li class="header">Anasayfa</li>
-                        <li class="active"><a href="{{route('anasayfa.index')}}"><i class="fa fa-dashboard"></i> <span>Güncel Durum</span></a></li>                        
+                        <li class="active"><a href="{{route('anasayfa.index')}}"><i class="fa fa-dashboard"></i> <span>Güncel Durum</span></a></li>
+                        <li class="header">Sayfalar</li>
                         <li>
                             <a href="#Cariler" class="has-arrow"><i class="fa fa-folder"></i><span>Cariler</span></a>
                             <ul>
@@ -36,7 +37,7 @@
                                 <li><a href="{{route('caris.index')}}">Cari listesi</a></li>
                             </ul>
                         </li>
-                        <li><a href="app-contacts.html"><i class="fa fa-address-book"></i> <span>Personel</span></a></li>                                       
+                        <li><a href="app-contacts.html"><i class="fa fa-address-book"></i> <span>Personel</span></a></li>
                         <li><a href="map-jvectormap.html"><i class="fa fa-map"></i> <span>Harita</span></a></li>
                         <li class="extra_widget">
                             <div class="form-group">
@@ -53,6 +54,6 @@
                             </div>
                         </li>
                     </ul>
-                </nav>     
+                </nav>
             </div>
         </div>
