@@ -1,31 +1,55 @@
 <?php
 namespace App\Http\Controllers;
+
+
+use  App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Hash;
 use Session;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
-    public function index()
+    //Login bölümü-----------------
+
+    public function showLogin()
     {
         return view('authentication.login');
     }
 
     public function customLogin(Request $request)
-    {
-        $request->validate([
+    {        $request->validate([
             'email' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended(route('dashboard'))->withSuccess('Giriş başarılı');
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return redirect('login')->with('error','Kullanıcı bulunamadı');
         }
 
-        return redirect('login')->withError('Giriş bilgileri doğru değil');
+        $credentials = [
+            'email'=>$request->input('email'),
+            'password'=>$request->input('password'),
+        ];
+
+        if (Auth::attempt($credentials)) {
+            Auth::login($user);
+            return redirect()->intended(route('anasayfa.index'))->withSuccess('Giriş başarılı');
+        }
+
+
+        return redirect('login')->with('error','Giriş bilgileri doğru değil');
+    }
+
+    //Register Bölümü---------------
+
+    public function showRegister()
+    {
+        return view('authentication.register');
     }
 
     public function customRegister(Request $request)
@@ -37,22 +61,28 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $data = $request->all();
-        $check = $this->create($data);
-        Auth::login($user);
+        //$data = $request->all();
+        //$user = $this->create($data);
+        //Auth::login($user);
 
-        return redirect()->route('dashboard')->withSuccess('Hesap oluşturuldu');
-    }
 
-    public function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+
+
+        $user = User::create([
+            'name' => $request['name'],
+            'surname' => $request['surname'],
+            'email' => $request['email'],
+            'password' => Hash::make($request->input('password')),
         ]);
+        if ($user) {
+            // User registration was successful
+            return redirect('login')->withSuccess('Kayıt işlemi başarıyla tamamlandı. Şimdi giriş yapabilirsiniz.');
+        } else {
+            // User registration failed
+            return redirect('register')->withError('Kayıt işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin.');
+        }
     }
+
 
     public function dashboard()
     {
@@ -68,6 +98,13 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect('login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return Redirect::route('authentication.login');
     }
 
     //public function forgotPassword()

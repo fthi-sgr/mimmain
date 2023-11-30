@@ -15,22 +15,12 @@ Cari listesi
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Table Tools<small>Basic example without any additional modification classes</small></h2>
-                                <ul class="header-dropdown dropdown">
-
-                                    <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                                        <ul class="dropdown-menu theme-bg gradient">
-                                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-eye"></i> View Details</a></li>
-                                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-share-alt"></i> Share</a></li>
-                                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-copy"></i> Copy to</a></li>
-                                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-folder"></i> Move to</a></li>
-                                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-edit"></i> Rename</a></li>
-                                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-trash"></i> Delete</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                    <h2>Cariler</h2>
+                                <div class="clearfix">
+                                    <a href="#" class="btn btn-primary">Şirket Carileri</a>
+                                    <a href="#" class="btn btn-primary">Personel Carileri</a>
+                                    <a href="{{ route('caris.create') }}" class="btn btn-primary pull-right">Cari Oluştur</a>
+                                </div>
                             </div>
                             <div class="body">
                                 <div class="table-responsive">
@@ -72,20 +62,7 @@ Cari listesi
                                             <td>{{ $cari->cari_etiket }}</td>
                                             <td>{{$cari->vergi_no}}</td>
                                             <td>
-                                                <!-- <div class="dropdown">
-                                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    İşlemler
-                                                    </button>
-                                                        <div class="dropdown-menu" aria-labelledby="actionDropdown">
-                                                            <a class="dropdown-item" href="{{ route('caris.show',[$cari->id]) }}">Ayrıntılar</a>
 
-                                                            <a class="dropdown-item" href="{{ route('caris.edit', [$cari->id]) }}">Düzenle</a>
-
-                                                            <a class="dropdown-item" href="{{ route('caris.destroy', [$cari->id]) }}" onclick="return confirm('Silmek istediğinizden emin misiniz?')">Sil</a>
-
-                                                    </div>
-
-                                                </div> -->
                                                 <div class="header">
 
                                                     <ul class="header-dropdown dropdown">

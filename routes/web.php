@@ -23,17 +23,31 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AuthController;
 
 //Anasayfa
-Route::get('anasayfa',  [AnasayfaController::class, 'index'])->name('anasayfa.index');
+
+Route::prefix('/')->middleware('is_user')->group(function () {
+    Route::get('/',  [AnasayfaController::class, 'index'])->name('anasayfa.index');
+});
+
 
 //Giriş Route ları
 
 
-Route::get('dashboard', [AuthController::class, 'dashboard']);
+/*Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('login', [AuthController::class, 'index'])->name('authentication.login');
 Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
 Route::get('register', [AuthController::class, 'register'])->name('authentication.register');
 Route::post('custom-register', [AuthController::class, 'customRegister'])->name('register.custom');
 Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
+*/
+
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('authentication.login');
+Route::post('/login', [AuthController::class, 'customLogin'])->name('login.submit');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('authentication.register');
+Route::post('/register', [AuthController::class, 'customRegister'])->name('register.submit');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('authentication.logout');
+
 
 
 //Cari Route

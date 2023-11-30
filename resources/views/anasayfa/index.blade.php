@@ -10,14 +10,13 @@
 
 @section('content')
 
-
-<div class="container-fluid">
+    <div class="container-fluid">
                 <!-- Page header section  -->
                 <div class="block-header">
                     <div class="row clearfix">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <h1>Merhba hoşgeldniz</h1>
-                            <span>JustDo Dashboard,</span>
+                            <span>JustDo @yield('title')</span>
                         </div>
                         <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
                             <div class="d-flex align-items-center justify-content-lg-end mt-4 mt-lg-0 flex-wrap vivify pullUp delay-550">
@@ -40,17 +39,16 @@
                 <div class="row clearfix">
                     <div class="col-12">
                         <nav class="navbar navbar-expand-lg navbar-light bg-light page_menu">
-                           
+
                             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                                 <ul class="navbar-nav mr-auto">
                                     <li class="nav-item vivify swoopInTop delay-150 active"><a class="nav-link" href="index.html">Analiz</a></li>
-                                    <li class="nav-item vivify swoopInTop delay-150 active"><a class="nav-link" href="finance.html">Finans Performans</a></li>  
-                                   
+                                    <li class="nav-item vivify swoopInTop delay-150 active"><a class="nav-link" href="finance.html">Finans Performans</a></li>
+
                                 </ul>
                                 <div class="ml-auto">
                                     <a href="app-todo.html" class="btn btn-default">ToDo</a>
                                     <a href="setting.html" class="btn btn-default">Ayarlar</a>
-                                    
                                 </div>
                             </div>
                         </nav>
@@ -123,7 +121,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>                                    
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -183,11 +181,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>                                    
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>         
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -209,7 +207,7 @@
                                             <a class="dropdown-item" href="javascript:void(0);">Geçen Hafta</a>
                                             <a class="dropdown-item" href="javascript:void(0);">Bu Ay</a>
                                             <a class="dropdown-item" href="javascript:void(0);">Geçen Ay</a>
-                      
+
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-default"><i class="fa fa-send"></i> <span class="hidden-md">Rapor</span></button>
@@ -226,13 +224,13 @@
                                 <h2>Bu Yılın Toplam Geliri</h2>
                                 <small class="text-muted font-12">Günlük,Haftalık ve Aylık işlemlerin Grafiği </small>
                                 <ul class="header-dropdown dropdown">
-                                    
+
                                     <li class="dropdown">
                                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                                         <ul class="dropdown-menu theme-bg gradient">
                                             <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-eye"></i> Detaylar</a></li>
                                             <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-share-alt"></i> Paylaş</a></li>
-                                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-copy"></i> Kopyala</a></li>      
+                                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-copy"></i> Kopyala</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -258,7 +256,7 @@
                                 <div id="flotChart" class="flot-chart"></div>
                             </div>
                         </div>
-                    </div>              
+                    </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="header">
@@ -298,18 +296,24 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-
-
-            
-            </div>
-
-
-
-     
+     </div>
 
 @endsection
+<link rel="stylesheet" href="{{ asset('admin/assets/vendor/chartist/css/chartist.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/assets/vendor/c3/c3.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/assets/vendor/toastr/toastr.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/assets/vendor/jvectormap/jquery-jvectormap-2.0.3.css') }}">
+
+<script src="{{ asset('admin/assets/bundles/flotscripts.bundle.js') }}"></script>
+<script src="{{ asset('admin/assets/bundles/c3.bundle.js') }}"></script>
+<script src="{{ asset('admin/assets/bundles/apexcharts.bundle.js') }}"></script>
+<script src="{{ asset('admin/assets/bundles/jvectormap.bundle.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/toastr/toastr.js') }}"></script>
+
+<script src="{{ asset('admin/assets/js/index.js') }}"></script>
 
 @section('js')
 @endsection
