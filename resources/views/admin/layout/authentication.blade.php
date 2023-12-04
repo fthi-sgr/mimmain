@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('admin/assets/images/favicon.ico') }}" type="image/x-icon"> <!-- Favicon-->
     <title>@yield('title') - {{ config('app.name') }}</title>
@@ -25,32 +27,33 @@
 
 <body class="theme-cyan">
 
-<div class="auth-main">
+    <div class="auth-main">
 
-    <div class="auth_div vivify fadeIn">
-        @yield('content')
+        <div class="auth_div vivify fadeIn">
+            @yield('content')
 
-        <div class="animate_lines">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+            <div class="animate_lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
         </div>
+
     </div>
 
-</div>
+    <!-- Scripts -->
+    @stack('before-scripts')
+    <script src="{{ asset('admin/assets/bundles/libscripts.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/bundles/vendorscripts.bundle.js') }}"></script>
+    @stack('after-scripts')
 
-<!-- Scripts -->
-@stack('before-scripts')
-<script src="{{ asset('admin/assets/bundles/libscripts.bundle.js') }}"></script>
-<script src="{{ asset('admin/assets/bundles/vendorscripts.bundle.js') }}"></script>
-@stack('after-scripts')
-
-@if (trim($__env->yieldContent('page-script')))
-    @yield('page-script')
-@endif
+    @if (trim($__env->yieldContent('page-script')))
+        @yield('page-script')
+    @endif
 
 </body>
+
 </html>

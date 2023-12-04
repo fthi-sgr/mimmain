@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CariController;
 use App\Http\Controllers\AnasayfaController;
-use App\Http\Controllers\AppsController;
+use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\ElementsController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\PagesController;
@@ -28,27 +28,13 @@ Route::prefix('/')->middleware('is_user')->group(function () {
     Route::get('/',  [AnasayfaController::class, 'index'])->name('anasayfa.index');
 });
 
-
-//Giriş Route ları
-
-
-/*Route::get('dashboard', [AuthController::class, 'dashboard']);
-Route::get('login', [AuthController::class, 'index'])->name('authentication.login');
-Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
-Route::get('register', [AuthController::class, 'register'])->name('authentication.register');
-Route::post('custom-register', [AuthController::class, 'customRegister'])->name('register.custom');
-Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
-*/
-
-
+//login Route
 Route::get('/login', [AuthController::class, 'showLogin'])->name('authentication.login');
 Route::post('/login', [AuthController::class, 'customLogin'])->name('login.submit');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('authentication.register');
 Route::post('/register', [AuthController::class, 'customRegister'])->name('register.submit');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('authentication.logout');
-
-
 
 //Cari Route
 
@@ -61,8 +47,8 @@ Route::get('/caris/{id}/edit', [CariController::class, 'edit'])->name('caris.edi
 Route::post('/caris/update/{id}', [CariController::class, 'update'])->name('caris.update');
 Route::delete('/caris/{id}', [CariController::class, 'destroy'])->name('caris.destroy');
 
-/*Apps*/
-Route::get('/apps/inbox',[AppsController::class,'inbox'])->name('apps.inbox');
+/*Personel*/
+Route::get('/personel',[PersonelController::class,'personel'])->name('personel.personel');
 
 
 /*elements*/

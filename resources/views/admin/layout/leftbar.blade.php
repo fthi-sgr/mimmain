@@ -12,7 +12,12 @@
                     </div>
                     <div class="dropdown">
                         <span>MİM Reklam</span>
-                        <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Fethi Sağır</strong></a>
+                        @auth
+
+
+                        <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown">
+
+                            <strong>{{ auth()->user()->name}}</strong></a>
                         <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
                             <li><a href="page-profile.html"><i class="fa fa-user"></i>Profilim</a></li>
                             <li><a href="app-inbox.html"><i class="fa fa-envelope"></i>Mesajlar</a></li>
@@ -20,12 +25,14 @@
                             <li class="divider"></li>
                             <li><a href="{{route('authentication.logout')}}"><i class="fa fa-power-off"></i>Oturumu Kapat</a></li>
                         </ul>
+                        @endauth
                     </div>
                 </div>
                 <nav id="left-sidebar-nav" class="sidebar-nav">
                     <ul id="main-menu" class="metismenu animation-li-delay">
                         <li class="header">Anasayfa</li>
                         <li class="active"><a href="{{route('anasayfa.index')}}"><i class="fa fa-dashboard"></i> <span>Güncel Durum</span></a></li>
+
                         <li class="header">Menü</li>
                         <li>
                             <a href="#Cariler" class="has-arrow"><i class="fa fa-folder"></i><span>Cariler</span></a>
@@ -37,7 +44,19 @@
                                 <li><a href="{{route('caris.index')}}">Cari listesi</a></li>
                             </ul>
                         </li>
-                        <li><a href="app-contacts.html"><i class="fa fa-address-book"></i> <span>Personel</span></a></li>
+                        <li>
+                            <a href="#Cariler" class="has-arrow"><i class="fa fa-th-list"></i><span>Birimler</span></a>
+                            <ul>
+                                <li><a href="page-login.html">Dijital Matbaa</a></li>
+                                <li><a href="page-register.html">Dijital Baskı</a></li>
+                                <li><a href="page-forgot-password.html">Tabela</a></li>
+                                <li><a href="{{route('caris.index')}}">Çerçeve</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{route('personel.personel')}}" ><i class="fa fa-address-book"></i><span>Personel</span></a>
+
+                        </li>
                         <li><a href="map-jvectormap.html"><i class="fa fa-map"></i> <span>Harita</span></a></li>
                         <li class="extra_widget">
                             <div class="form-group">
