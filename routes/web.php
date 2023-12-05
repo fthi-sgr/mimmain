@@ -21,6 +21,8 @@ use App\Http\Controllers\ElementsController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UrunController;
+
 
 //Anasayfa
 
@@ -33,13 +35,23 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('authentication
 Route::post('/login', [AuthController::class, 'customLogin'])->name('login.submit');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('authentication.register');
 Route::post('/register', [AuthController::class, 'customRegister'])->name('register.submit');
-
 Route::get('/logout', [AuthController::class, 'logout'])->name('authentication.logout');
 
-//Cari Route
 
+//Urunler Route
+Route::get('/urunlist',[UrunController::class,'index'])->name('urun.index');
+Route::get('/uruncreate', [UrunController::class, 'create'])->name('urun.create');
+Route::post('/usunstore', [UrunController::class, 'store'])->name('urun.store');
+Route::get('/urun/{id}', [UrunController::class, 'show'])->name('urun.show');
+Route::get('/urun/{id}/edit', [UrunController::class, 'edit'])->name('urun.edit');
+Route::post('/urun/update/{id}', [UrunController::class, 'update'])->name('urun.update');
+Route::delete('/urun/{id}', [UrunController::class, 'destroy'])->name('urun.destroy');
+
+
+
+
+//Cari Route
 Route::get('/carilist', [CariController::class, 'index'])->name('caris.index');
-// Route::get('/carislist', [CariController::class, 'index'])->name('caris.index');
 Route::get('/caris/create', [CariController::class, 'create'])->name('caris.create');
 Route::post('/cariadd', [CariController::class, 'store'])->name('caris.store');
 Route::get('/caris/{id}', [CariController::class, 'show'])->name('caris.show');
@@ -62,6 +74,7 @@ Route::get('/forms/validation',[FormsController::class,'validation'])->name('for
 
 /*extra pages*/
 Route::get('pages/settings',[PagesController::class,'settings'])->name('pages.settings');
+Route::get('/profile',[PagesController::class,'profile'])->name('pages.profile');
 
 
 

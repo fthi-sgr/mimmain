@@ -3093,7 +3093,7 @@ ul.choose-skin li.active div::after {
     border-radius: 0;
     background-color: transparent;
     height: auto;
-    border-color: var(--border-color);
+    border-color: #17a2b8(--border-color);
     font-size: 15px;
 }
 .form-control.round {

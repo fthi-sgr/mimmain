@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     function blank()                                {return view('pages.blank');}
     function searchresults()                        {return view('pages.searchresults');}
-    function profile()                              {return view('pages.profile');}
+    function profile()                              {return view('page.profile');}
     function invoices()                             {return view('pages.invoices');}
     function invoicesview()                         {return view('pages.invoicesview');}
     function gallery()                              {return view('pages.gallery');}

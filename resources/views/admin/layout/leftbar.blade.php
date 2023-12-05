@@ -19,7 +19,7 @@
 
                             <strong>{{ auth()->user()->name}}</strong></a>
                         <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                            <li><a href="page-profile.html"><i class="fa fa-user"></i>Profilim</a></li>
+                            <li><a href="{{route('pages.profile')}}"><i class="fa fa-user"></i>Profilim</a></li>
                             <li><a href="app-inbox.html"><i class="fa fa-envelope"></i>Mesajlar</a></li>
                             <li><a href="setting.html"><i class="fa fa-gear"></i>Ayarlar</a></li>
                             <li class="divider"></li>
@@ -34,6 +34,23 @@
                         <li class="active"><a href="{{route('anasayfa.index')}}"><i class="fa fa-dashboard"></i> <span>Güncel Durum</span></a></li>
 
                         <li class="header">Menü</li>
+                        <li>
+                            <a href="#" ><i class="fa fa-calculator"></i><span>Satış Yönetimi</span></a>
+
+                        </li>
+                        <li>
+                            <a href="#" ><i class="fa fa-file-text-o"></i><span>Satın Alma Yöneitimis</span></a>
+
+                        </li>
+                        <li>
+                            <a href="#" ><i class="fa fa-clone"></i><span>Genel Gider Yönetimi</span></a>
+
+                        </li>
+                        <li>
+                            <a href="{{route('urun.index')}}" ><i class="fa fa-database"></i><span>Ürün ve Hizmetler</span></a>
+
+                        </li>
+
                         <li>
                             <a href="#Cariler" class="has-arrow"><i class="fa fa-folder"></i><span>Cariler</span></a>
                             <ul>
@@ -58,6 +75,14 @@
 
                         </li>
                         <li><a href="map-jvectormap.html"><i class="fa fa-map"></i> <span>Harita</span></a></li>
+                        <li>
+                            <a href="#Cariler" class="has-arrow"><i class="fa fa-file-text"></i><span>Fatura</span></a>
+                            <ul>
+                                <li><a href="page-login.html">E-Fatura</a></li>
+
+                                <li><a href="{{route('caris.index')}}">E-Arşiv Fatura</a></li>
+                            </ul>
+                        </li>
                         <li class="extra_widget">
                             <div class="form-group">
                                 <label class="d-block">Traffic this Month <span class="float-right">77%</span></label>
