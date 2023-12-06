@@ -33,7 +33,7 @@
 
             <div class="auth_brand">
                 <a class="navbar-brand" href="#"><img src="{{ asset('admin/assets/images/icon.svg') }}"
-                        width="50" class="d-inline-block align-top mr-2" alt="">Mooli</a>
+                        width="50" class="d-inline-block align-top mr-2" alt="">Pilon Reklam</a>
             </div>
             <div class="card">
                 <div class="header">
@@ -63,12 +63,12 @@
                             <label>Şifre</label>
                             <input type="password" class="form-control" placeholder="Şifrenizi giriniz" name="password">
                         </div>
-                        <!--<a  type="submit" class="btn btn-dark btn-lg btn-block" href="{{ route('authentication.login') }}">Kayıt Ol</a> -->
+
                         <button type="submit" class="btn btn-dark btn-lg btn-block"
                             href="{{ route('authentication.register') }}">Kayıt Ol</button>
                         <div class="bottom">
                             <span>Zaten bir hesabınız var mı? <a
-                                    href="{{ route('authentication.login') }}">Login</a></span>
+                                    href="{{ route('authentication.login') }}">Giriş</a></span>
                         </div>
                     </form>
                 </div>

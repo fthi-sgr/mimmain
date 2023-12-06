@@ -1,4 +1,4 @@
-<!-- Main left sidebar menu -->
+
 <div id="left-sidebar" class="sidebar">
             <a href="#" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
             <div class="navbar-brand">

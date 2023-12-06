@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Schema;
     {
         Schema::create('urunler', function (Blueprint $table) {
             $table->id();
-            $table->string('urun_kodu');
+            $table->string('urun_kodu')->unique();
             $table->string('urun_adi');
             $table->string('barkod');
             $table->string('urun_etiketi');
@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Schema;
             $table->string('gtip_no');
             $table->text('aciklama');
         });
+
+
     }
 
     /**

@@ -57,14 +57,14 @@
                                 name="email" required autofocus>
                         </div>
                         <div class="form-group c_form_group">
-                            <label>Password</label>
+                            <label>Şifre </label>
                             <input type="password" class="form-control" placeholder="Şifrenizi giriniz!" name="password"
                                 required>
                         </div>
                         <div class="form-group clearfix">
                             <label class="fancy-checkbox element-left">
                                 <input type="checkbox">
-                                <span>Remember me</span>
+                                <span>Beni Hatırla!</span>
                             </label>
                         </div>
                         <button class="btn btn-dark btn-lg btn-block" type="submit">Giriş Yap</button>
