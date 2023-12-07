@@ -69,7 +69,7 @@ class UrunController extends Controller
 
     public function update(Request $request)
     {
-        $id =$request->$id;
+        $id =$request->id;
 
             $urun= Urun::where('id',$id)->first();
 

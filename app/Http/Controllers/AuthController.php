@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use  App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
