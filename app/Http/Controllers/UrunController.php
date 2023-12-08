@@ -10,89 +10,72 @@ class UrunController extends Controller
 {
     public function index()
     {
-
-        $urun = Urun::all();
-
-        return view('urun.index', compact('urun'));
-
+        $uruns = Urun::all();
+        return view('uruns.index', compact('uruns'));
     }
 
     public function create()
     {
-       return view('urun.create');//ürün ekleme
+        return view('uruns.create');
     }
 
     public function store(Request $request)
     {
-        try{
+        try {
+            Urun::create([
+                'urun_kodu' => $request->urun_kodu,
+                'urun_adi' => $request->urun_adi,
+                'barkod' => $request->barkod,
+                'urun_etiketi' => $request->urun_etiketi,
+                'stok_saklama_birimi' => $request->stok_saklama_birimi,
+                'mensei' => $request->mensei,
+                'gtip_no' => $request->gtip_no,
+                'aciklama' => $request->aciklama,
+            ]);
 
-            $urun = new Urun();
-            $urun->urun_kodu=$request->urun_kodu;
-            $urun->urun_adi=$request->urun_adi;
-            $urun->barkod=$request->barkod;
-            $urun->urun_etiketi=$request->urun_etiketi;
-            $urun->stok_saklama_birimi=$request->stok_saklama_birimi;
-            $urun->mensei=$request->mensei;
-            $urun->gtip_no=$request->gtip_no;
-            $urun->aciklama=$request->urun_adi;
-            $urun->save();
-
-            return redirect()->route('urun.index');
-        }
-        catch(\Exception $e)
-        {
+            return redirect()->route('uruns.index')->with('success', 'Ürün başarıyla eklendi.');
+        } catch (\Exception $e) {
+            // Hata durumunda hatayı göster ve geri dön
             dd($e->getMessage());
-            return redirect()->back()->with('error','Ürün eklenirken bir hata oluştu!');
+            return redirect()->back()->with('error', 'Ürün eklenirken bir hata oluştu!');
         }
     }
 
-    public function show(Request $request)
+    public function show(Urun $urun)
     {
-        $id = $request->id;
-        $data = [
-            'urun'=> Urun::where('id',$id)->first(),
-        ];
-        return view('urun.show',$data);
+        return view('uruns.show', compact('urun'));
     }
 
-    public function edit (Request $request)
+    public function edit(Urun $urun)
     {
-        $id = $request->id;
-        $data = [
-            'urun' => Urun::where('id', $id)->first(),
-
-
-        ];
-        return view('urun.edit' , $data);
-
+        return view('uruns.edit', compact('urun'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Urun $urun)
     {
-        $id =$request->id;
+        try {
+            $urun->update([
+                'urun_kodu' => $request->urun_kodu,
+                'urun_adi' => $request->urun_adi,
+                'barkod' => $request->barkod,
+                'urun_etiketi' => $request->urun_etiketi,
+                'stok_saklama_birimi' => $request->stok_saklama_birimi,
+                'mensei' => $request->mensei,
+                'gtip_no' => $request->gtip_no,
+                'aciklama' => $request->aciklama,
+            ]);
 
-            $urun= Urun::where('id',$id)->first();
-
-            $urun->urun_kodu=$request->urun_kodu;
-            $urun->urun_adi=$request->urun_adi;
-            $urun->barkod=$request->barkod;
-            $urun->urun_etiketi=$request->urun_etiketi;
-            $urun->stok_saklama_birimi=$request->stok_saklama_birimi;
-            $urun->mensei=$request->mensei;
-            $urun->gtip_no=$request->gtip_no;
-            $urun->aciklama=$request->urun_adi;
-            $urun->save();
-
-            return redirect()->route('urun.index')->with('success','Urun başarıyla eklendş.');
-
+            return redirect()->route('uruns.index')->with('success', 'Ürün başarıyla güncellendi.');
+        } catch (\Exception $e) {
+            // Hata durumunda hatayı göster ve geri dön
+            dd($e->getMessage());
+            return redirect()->back()->with('error', 'Ürün güncellenirken bir hata oluştu!');
+        }
     }
+
     public function destroy(Urun $urun)
     {
         $urun->delete();
-        return redirect()->route('urun.index')->with('success','Başarılı bir şekilde silindi');
-     }
-
-
-
-
+        return redirect()->route('uruns.index')->with('success', 'Ürün başarıyla silindi.');
+    }
 }

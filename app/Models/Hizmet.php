@@ -17,4 +17,9 @@ class Hizmet extends Model
         'mensei',
         'aciklama',
     ];
+
+    public function kdv()
+    {
+        return @this->belongsTo(Kdv::class,'Kdv','id');
+    }
 }

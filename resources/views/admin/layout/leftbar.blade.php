@@ -47,7 +47,7 @@
 
                         </li>
                         <li>
-                            <a href="{{route('urun.index')}}" ><i class="fa fa-database"></i><span>Ürün ve Hizmetler</span></a>
+                            <a href="{{route('uruns.index')}}" ><i class="fa fa-database"></i><span>Ürün ve Hizmetler</span></a>
 
                         </li>
 

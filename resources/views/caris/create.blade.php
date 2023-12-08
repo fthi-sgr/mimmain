@@ -13,15 +13,18 @@
 
         <div class="col-lg-12">
             <div class="card">
-                <div class="header">
-                    <h2>Cariler</h2>
-                    <div class="clearfix">
-                        <a href="#" class="btn btn-primary">Şirket Carileri</a>
-                        <a href="#" class="btn btn-primary">Personel Carileri</a>
-                        <a href="{{ route('caris.create') }}" class="btn btn-primary pull-right">Cari Oluştur</a>
-                    </div>
+                <div class="">
+                    <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
+                       <h2> <span class="title">Cariler</span> </h2>
+                    </a>
                 </div>
-                <br>
+                <div class="header">
+                    <h2> <strong>Yeni Genel Cari</strong></h2>
+
+
+                </div>
+                <hr>
+
 
                 <table class="table">
                     <form action="{{ route('caris.store') }}" method="POST">

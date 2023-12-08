@@ -22,6 +22,8 @@ use App\Http\Controllers\FormsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UrunController;
+use App\Http\Controllers\HizmetController;
+use App\Http\Controllers\TumuController;
 
 
 //Anasayfa
@@ -37,19 +39,26 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('authenti
 Route::post('/register', [AuthController::class, 'customRegister'])->name('register.submit');
 Route::get('/logout', [AuthController::class, 'logout'])->name('authentication.logout');
 
+//ürünler ve hizmetler route
+//Route::get('/urunhizmet',[TumuController::class,'index'])->name('urunhizmet.index');
 
 //Urunler Route
-Route::get('/urunlist',[UrunController::class,'index'])->name('urun.index');
-Route::get('/uruncreate', [UrunController::class, 'create'])->name('urun.create');
-Route::post('/usunstore', [UrunController::class, 'store'])->name('urun.store');
-Route::get('/urun/{id}', [UrunController::class, 'show'])->name('urun.show');
-Route::get('/urun/{id}/edit', [UrunController::class, 'edit'])->name('urun.edit');
-Route::post('/urun/update/{id}', [UrunController::class, 'update'])->name('urun.update');
-Route::delete('/urun/{id}', [UrunController::class, 'destroy'])->name('urun.destroy');
+Route::get('/urunlist',[UrunController::class,'index'])->name('uruns.index');
+Route::get('/uruncreate', [UrunController::class, 'create'])->name('uruns.create');
+Route::post('/urunstore', [UrunController::class, 'store'])->name('uruns.store');
+Route::get('/urun/{id}', [UrunController::class, 'show'])->name('uruns.show');
+Route::get('/urun/{id}/edit', [UrunController::class, 'edit'])->name('uruns.edit');
+Route::post('/urun/update/{id}', [UrunController::class, 'update'])->name('uruns.update');
+Route::delete('/urun/{id}', [UrunController::class, 'destroy'])->name('uruns.destroy');
 
-
-
-
+// Hizmet Route
+Route::get('/hizmetlist',[HizmetController::class,'index'])->name('hizmet.index');
+Route::get('/hizmetcreate', [HizmetController::class, 'create'])->name('hizmet.create');
+Route::post('/hizmetstore', [HizmetController::class, 'store'])->name('hizmet.store');
+Route::get('/hizmet/{id}', [HizmetController::class, 'show'])->name('hizmet.show');
+Route::get('/hizmet/{id}/edit', [HizmetController::class, 'edit'])->name('hizmet.edit');
+Route::post('/hizmet/update/{id}', [HizmetController::class, 'update'])->name('hizmet.update');
+Route::delete('/hizmet/{id}', [HizmetController::class, 'destroy'])->name('hizmet.destroy');
 //Cari Route
 Route::get('/carilist', [CariController::class, 'index'])->name('caris.index');
 Route::get('/caris/create', [CariController::class, 'create'])->name('caris.create');

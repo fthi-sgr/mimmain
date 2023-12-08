@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/animate-css/vivify.min.css') }}">
 @stack('after-styles')
 @if (trim($__env->yieldContent('page-styles')))
-@yield('page-styles')
+    @yield('page-styles')
 @endif
 
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/chartist/css/chartist.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/c3/c3.min.css') }}">
-<link rel="stylesheet" href="{{ asset('admin/assets/vendor/toastr/toastr.min.cs') }}s">
+<link rel="stylesheet" href="{{ asset('admin/assets/vendor/toastr/toastr.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/jvectormap/jquery-jvectormap-2.0.3.min.css') }}"/>
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
@@ -31,7 +31,10 @@
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/sweetalert/sweetalert.css') }}">
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('admin/assets/css/mooli.min.css') }}">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+
 @yield('css')
 </head>
 
@@ -100,31 +103,31 @@
     @yield('popup')
 
 </div>
-
-<!-- Main jquery and bootstrap Script -->
 @stack('before-scripts')
 <script src="{{ asset('admin/assets/bundles/libscripts.bundle.js') }}"></script>
 <script src="{{ asset('admin/assets/bundles/vendorscripts.bundle.js') }}"></script>
 @stack('after-scripts')
+
 <!-- Vedor js file and create bundle with grunt  -->
 <script src="{{ asset('admin/assets/bundles/flotscripts.bundle.js') }}"></script><!-- flot charts Plugin Js -->
 <script src="{{ asset('admin/assets/bundles/c3.bundle.js') }}"></script>
 <script src="{{ asset('admin/assets/bundles/apexcharts.bundle.js') }}"></script>
 <script src="{{ asset('admin/assets/bundles/jvectormap.bundle.js') }}"></script>
 <script src="{{ asset('admin/assets/vendor/toastr/toastr.js') }}"></script>
-<!--  -->
-<script src="{{asset('admin/assets/bundles/datatablescripts.bundle.js')}}"></script>
-<script src="{{asset('admin/assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('admin/assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js')}}"></script>
-<script src="{{asset('admin/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js')}}"></script>
-<script src="{{asset('admin/assets/vendor/jquery-datatable/buttons/buttons.print.min.js')}}"></script>
-<script src="{{asset('admin/assets/vendor/sweetalert/sweetalert.min.js')}}"></script><!-- SweetAlert Plugin Js -->
 
+<!-- Datatable scripts -->
+<script src="{{ asset('admin/assets/bundles/datatablescripts.bundle.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/sweetalert/sweetalert.min.js') }}"></script><!-- SweetAlert Plugin Js -->
 
 <!-- Project core js file minify with grunt -->
 <script src="{{ asset('admin/assets/bundles/mainscripts.bundle.js') }}"></script>
-<script src="{{ asset('admin/assets/js/index.js')}}"></script>
+<script src="{{ asset('admin/assets/js/index.js') }}"></script>
+
 
 
 

@@ -13,16 +13,23 @@
 
         <div class="col-lg-12">
             <div class="card">
+                <!-- Menu Trigger For Mobile -->
+                    <div class="">
+                        <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
+                            <span class="title">Ürün ve Hizmetler</span>
+                        </a>
+                    </div>
+
                 <div class="header">
                     <div class="clearfix ">
-                        <a href="{{ route('urun.index') }}" class="btn btn-primary">Tümü</a>
-                        <a href="{{ route('urun.index') }}" class="btn btn-primary" title="Ürünler">Ürünler</a>
-                        <a href="{{ route('urun.index') }}" class="btn btn-primary">Depo</a>
-                        <a href="{{ route('urun.create') }}" class="btn btn-primary pull-right">Ürün Oluştur</a>
-
+                        <a href="{{ route('uruns.index') }}" class="btn btn-primary" title="Ürünler">Ürünler</a>
+                        <a href="{{ route('hizmet.index') }}" class="btn btn-primary">Hizmetler</a>
+                        <a href="{{ route('hizmet.index') }}" class="btn btn-primary">Depolar</a>
+                        <hr>
+                        <a href="{{ route('uruns.create') }}" class="btn btn-primary pull-right">Ürün Oluştur</a>
                     </div>
-                    <hr>
                     <h4><strong id="dynamicTitle">Ürünler</strong></h4>
+
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -44,27 +51,24 @@
                                     <th><strong>Stok Durumu</strong></th>
                                     <th><strong>Toplam Çıkış Bakiye</strong></th>
                                     <th><strong>Toplam Giriş Bakiye</strong></th>
-                                    <th><strong>Ortlama Birim Fiyatı</strong></th>
+                                    <th><strong>Ortalama Birim Fiyatı</strong></th>
                                 </tr>
                             </thead>
-                            <TBody>
-                                @foreach ($urun as $urun )
-                                <tr>
-                                    <td>{{$cari->urun_kodu}}</td>
-                                    <td>{{$cari->urun_adi}}</td>
-                                    <td>{{$cari->barkod}}</td>
-                                    <td>{{$cari->urun_etiketi}}</td>
-                                    <td>{{$cari->stok_saklama_brimi}}</td>
-                                    <td>{{$cari->mensei}}</td>
-                                    <td>{{$cari->gtip_no}}</td>
-                                    <td>{{$cari->aciklama}}</td>
+                            <tbody>
+                                @foreach ($uruns as $urun)
+                                    <tr>
+                                        <td>{{ $urun->urun_kodu }}</td>
+                                        <td>{{ $urun->urun_adi }}</td>
+                                        <td>{{ $urun->barkod }}</td>
+                                        <td>{{ $urun->urun_etiketi }}</td>
+                                        <td>{{ $urun->stok_saklama_brimi }}</td>
+                                        <td>{{ $urun->mensei }}</td>
+                                        <td>{{ $urun->gtip_no }}</td>
+                                        <td>{{ $urun->aciklama }}</td>
 
-                                </tr>
-
+                                    </tr>
                                 @endforeach
-
-
-                            </TBody>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -73,11 +77,15 @@
     </div>
 @endsection
 @section('js')
-    <!-- jsPDF JavaScript dosyası -->
     <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js">
     </script>
 
     <script src="{{ asset('admin/assets/js/pages/tables/jquery-datatable.js') }}"></script>
+    <!-- jsPDF JavaScript dosyası -->
+    {{-- <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js">
+    </script>
+
+    <script src="{{ asset('admin/assets/js/pages/tables/jquery-datatable.js') }}"></script> --}}
     <script>
         $(document).ready(function() {
             // Her bir butona tıklama olayını ekle
