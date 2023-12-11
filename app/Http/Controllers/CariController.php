@@ -22,15 +22,15 @@ class CariController extends Controller
 
     public function create()
     {
-        
+
         return view('caris.create');
     }
 
     public function store(Request $request)
     {
-       
-      
-       try{ 
+
+
+       try{
 
         $cari = new Cari();
         $cari->cari_kodu = $request->cari_kodu;
@@ -50,7 +50,7 @@ class CariController extends Controller
         $cari->aciklama = $request->aciklama;
         $cari->save();
 
-      
+
 
         return redirect()->route('caris.index');
     }catch(\Exception $e){
@@ -65,7 +65,7 @@ class CariController extends Controller
         $id = $request->id;
         $data = [
             'cari' => Cari::where('id', $id)->first(),
-           
+
         ];
         return view('caris.show', $data);
     }
@@ -75,46 +75,42 @@ class CariController extends Controller
         $id = $request->id;
         $data = [
             'cari' => Cari::where('id', $id)->first(),
-           
+
 
         ];
         return view('caris.edit' , $data);
     }
     public function update(Request $request)
     {
-
         $id = $request->id;
-        // try {
-            $cari =  Cari::where('id', $id)->first();
-         
-            $cari->cari_kodu = $request->cari_kodu;
-            $cari->cari_turu = $request->cari_turu;
-            $cari->cari_adi = $request->cari_adi;
-            $cari->cari_tipi = $request->cari_tipi;
-            $cari->kisa_ad = $request->kisa_ad;
-            $cari->cari_etiket = $request->cari_etiket;
-            $cari->vergi_no = $request->vergi_no;
-            $cari->vergi_dairesi = $request->vergi_dairesi;
-            $cari->yetkili = $request->yetkili;
-            $cari->yetkili_tel = $request->yetkili_tel;
-            $cari->email = $request->email;
-            $cari->vade_gunu = $request->vade_gunu;
-            $cari->iskonto = $request->iskonto;
-            $cari->referans = $request->referans;
-            $cari->aciklama = $request->aciklama;
-            $cari->save();
-        
 
-    
+        try {
+            $cari = Cari::findOrFail($id);
+
+            $cari->update([
+                'cari_kodu' => $request->cari_kodu,
+                'cari_turu' => $request->cari_turu,
+                'cari_adi' => $request->cari_adi,
+                'cari_tipi' => $request->cari_tipi,
+                'kisa_ad' => $request->kisa_ad,
+                'cari_etiket' => $request->cari_etiket,
+                'vergi_no' => $request->vergi_no,
+                'vergi_dairesi' => $request->vergi_dairesi,
+                'yetkili' => $request->yetkili,
+                'yetkili_tel' => $request->yetkili_tel,
+                'email' => $request->email,
+                'vade_gunu' => $request->vade_gunu,
+                'iskonto' => $request->iskonto,
+                'referans' => $request->referans,
+                'aciklama' => $request->aciklama,
+            ]);
+
             return redirect()->route('caris.index')->with('success', 'Cari başarıyla güncellendi.');
-        // } catch (ModelNotFoundException $e) {
-        //     // Belirtilen ID'ye sahip Cari bulunamazsa
-        //     return redirect()->back()->with('error', 'Cari bulunamadı.');
-        // } catch (\Exception $e) {
-        //     // Diğer hata durumları için genel bir hata mesajı
-        //     return redirect()->back()->with('error', 'Cari güncellenirken bir hata oluştu.');
-        // }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Cari güncellenirken bir hata oluştu.');
+        }
     }
+
     public function destroy(Cari $cari)
     {
         $cari->delete();

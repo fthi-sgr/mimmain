@@ -14,17 +14,17 @@
         <div class="col-lg-12">
             <div class="card">
                 <!-- Menu Trigger For Mobile -->
-                    <div class="">
-                        <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
-                            <span class="title">Ürün ve Hizmetler</span>
-                        </a>
-                    </div>
+                <div class="">
+                    <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
+                        <span class="title">Ürün ve Hizmetler</span>
+                    </a>
+                </div>
 
                 <div class="header">
                     <div class="clearfix ">
                         <a href="{{ route('uruns.index') }}" class="btn btn-primary" title="Ürünler">Ürünler</a>
                         <a href="{{ route('hizmet.index') }}" class="btn btn-primary">Hizmetler</a>
-                        <a href="{{ route('hizmet.index') }}" class="btn btn-primary">Depolar</a>
+                        <a href="{{ route('depo.index') }}" class="btn btn-primary">Depolar</a>
                         <hr>
                         <a href="{{ route('uruns.create') }}" class="btn btn-primary pull-right">Ürün Oluştur</a>
                     </div>

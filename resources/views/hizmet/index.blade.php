@@ -10,23 +10,23 @@
     <div class=" row clearfix">
         <div class="col-lg-12">
             <div class="card">
-                <minotaur-topbar><!-- Menu Trigger For Mobile -->
-                    <div class="">
-                        <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
-                            <span class="title">Ürün ve Hizmetler</span>
-                        </a>
-                    </div>
-                </minotaur-topbar>
-                <div class="header">
-                    <div class="clearfix">
+                <!-- Menu Trigger For Mobile -->
+                <div class="">
+                    <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
+                        <span class="title">Ürün ve Hizmetler</span>
+                    </a>
+                </div>
 
+                <div class="header">
+                    <div class="clearfix ">
                         <a href="{{ route('uruns.index') }}" class="btn btn-primary" title="Ürünler">Ürünler</a>
                         <a href="{{ route('hizmet.index') }}" class="btn btn-primary">Hizmetler</a>
-                        <a href="{{ route('hizmet.index') }}" class="btn btn-primary">Depolar</a>
-                        <a href="{{ route('hizmet.create') }}" class="btn btn-primary pull-right">Hizmet Oluştur</a>
+                        <a href="{{ route('depo.index') }}" class="btn btn-primary">Depolar</a>
+                        <hr>
+                        <a href="{{ route('hizmet.create') }}" class="btn btn-primary pull-right">Hizmet Ekle</a>
                     </div>
-                    <hr>
                     <h4><strong id="dynamicTitle">Hizmetler</strong></h4>
+
                 </div>
                 <div class="body">
                     <div class="table-responsive">

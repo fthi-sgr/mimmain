@@ -43,9 +43,11 @@
 
                         </li>
                         <li>
-                            <a href="#" ><i class="fa fa-clone"></i><span>Genel Gider Yönetimi</span></a>
+                            <a href="{{route('depo.index')}}" ><i class="fa fa-clone"></i><span>Genel Gider Yönetimi</span></a>
+
 
                         </li>
+
                         <li>
                             <a href="{{route('uruns.index')}}" ><i class="fa fa-database"></i><span>Ürün ve Hizmetler</span></a>
 
@@ -57,7 +59,7 @@
                                 <li><a href="page-login.html">Login</a></li>
                                 <li><a href="page-register.html">Register</a></li>
                                 <li><a href="page-forgot-password.html">Forgot Password</a></li>
-                                <li><a href="page-404.html">Page 404</a></li>
+                                <li><a href="{{route('depo.index')}}">Page 404</a></li>
                                 <li><a href="{{route('caris.index')}}">Cari listesi</a></li>
                             </ul>
                         </li>
@@ -69,6 +71,19 @@
                                 <li><a href="page-forgot-password.html">Tabela</a></li>
                                 <li><a href="{{route('caris.index')}}">Çerçeve</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="#Finans" class="has-arrow"><i class="fa fa-money"></i><span>Finans</span></a>
+                            <ul>
+                                <li><a href="#">Banka Hesapları</a></li>
+                                <li><a href="#">Kasalar</a></li>
+                                <li><a href="page-forgot-password.html">Kredi Kartı</a></li>
+                                <li><a href="{{route('caris.index')}}">Online Hesaplar</a></li>
+                                <li><a href="#">Çekler</a></li>
+                                <li><a href="#">Senetler</a></li>
+                            </ul>
+
+
                         </li>
                         <li>
                             <a href="{{route('personel.personel')}}" ><i class="fa fa-address-book"></i><span>Personel</span></a>

@@ -23,7 +23,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UrunController;
 use App\Http\Controllers\HizmetController;
-use App\Http\Controllers\TumuController;
+use App\Http\Controllers\DepoController;
 
 
 //Anasayfa
@@ -39,7 +39,7 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('authenti
 Route::post('/register', [AuthController::class, 'customRegister'])->name('register.submit');
 Route::get('/logout', [AuthController::class, 'logout'])->name('authentication.logout');
 
-//ürünler ve hizmetler route
+//ürünler ve hizmetler route--------------------------------------------------------
 //Route::get('/urunhizmet',[TumuController::class,'index'])->name('urunhizmet.index');
 
 //Urunler Route
@@ -59,6 +59,17 @@ Route::get('/hizmet/{id}', [HizmetController::class, 'show'])->name('hizmet.show
 Route::get('/hizmet/{id}/edit', [HizmetController::class, 'edit'])->name('hizmet.edit');
 Route::post('/hizmet/update/{id}', [HizmetController::class, 'update'])->name('hizmet.update');
 Route::delete('/hizmet/{id}', [HizmetController::class, 'destroy'])->name('hizmet.destroy');
+
+//Dapolar Route
+Route::get('/depolist',[DepoController::class,'index'])->name('depo.index');
+Route::get('/depocreate', [DepoController::class, 'create'])->name('depos.create');
+Route::post('/depostore', [DepoController::class, 'store'])->name('depos.store');
+Route::get('/depo/{id}', [DepoController::class, 'show'])->name('depos.show');
+Route::get('/depo/{id}/edit', [DepoController::class, 'edit'])->name('depos.edit');
+Route::post('/depo/update/{id}', [DepoController::class, 'update'])->name('depos.update');
+Route::delete('/depo/{id}', [DepoController::class, 'destroy'])->name('depos.destroy');
+
+//----------------------------------------------------------------------------------------------
 //Cari Route
 Route::get('/carilist', [CariController::class, 'index'])->name('caris.index');
 Route::get('/caris/create', [CariController::class, 'create'])->name('caris.create');

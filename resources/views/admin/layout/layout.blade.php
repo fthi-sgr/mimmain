@@ -11,15 +11,11 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- VENDOR CSS -->
 @yield('meta')
-@stack('before-styles')
+
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/animate-css/vivify.min.css') }}">
-@stack('after-styles')
-@if (trim($__env->yieldContent('page-styles')))
-    @yield('page-styles')
-@endif
-
+<link rel="stylesheet" href="{{ asset('admin/assets/vendor/jquery-steps/jquery.steps.css')}}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/chartist/css/chartist.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/c3/c3.min.css') }}">
@@ -32,7 +28,7 @@
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('admin/assets/css/mooli.min.css') }}">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 <script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
 
 @yield('css')

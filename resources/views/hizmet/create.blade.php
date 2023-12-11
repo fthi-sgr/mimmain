@@ -35,7 +35,8 @@
                         <!-- Bilgiler Sekmesi İçeriği -->
                         <ul class="nav nav-tabs mt-3" id="urunlerAltTabs">
                             <li class="nav-item">
-                                <a class="nav-link  active" id="urunBilgi-tab" data-toggle="tab" href="#urunBilgi">Bilgiler</a>
+                                <a class="nav-link  active" id="urunBilgi-tab" data-toggle="tab"
+                                    href="#urunBilgi">Bilgiler</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="urunFiyat-tab" data-toggle="tab" href="#urunFiyat">Fiyat</a>
@@ -112,9 +113,11 @@
                                     <!-- Buraya form elemanları gelecek -->
 
                                     <div class="clearfix">
+                                        <div class=" col-md-3">
                                         {{-- <button type="submit" class="btn btn-primary ml-4">Ekle</button> --}}
                                         <a href="#" class="btn btn-primary">Fiyat</a>
                                         <a href="{{ route('uruns.index') }}" class="btn btn-primary">Geri</a>
+                                    </div>
                                     </div>
                                 </form>
                             </div>

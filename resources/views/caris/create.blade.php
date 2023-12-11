@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="">
                     <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
-                       <h2> <span class="title">Cariler</span> </h2>
+                        <h2> <span class="title">Cariler</span> </h2>
                     </a>
                 </div>
                 <div class="header">
