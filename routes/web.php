@@ -24,6 +24,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UrunController;
 use App\Http\Controllers\HizmetController;
 use App\Http\Controllers\DepoController;
+use App\Http\Controllers\FinansController;
 
 
 //Anasayfa
@@ -79,6 +80,27 @@ Route::get('/caris/{id}/edit', [CariController::class, 'edit'])->name('caris.edi
 Route::post('/caris/update/{id}', [CariController::class, 'update'])->name('caris.update');
 Route::delete('/caris/{id}', [CariController::class, 'destroy'])->name('caris.destroy');
 
+
+
+
+//Finans page Route
+Route::prefix('finans')->group(function () {
+    // Banka CRUD işlemleri
+    Route::get('/bankalar', [FinansController::class, 'indexBanka'])->name('finans.banks.index');
+    Route::get('/bankalar/create', [FinansController::class, 'createBanka'])->name('finans.banks.create');
+    Route::post('/bankalar', [FinansController::class, 'storeBanka'])->name('finans.banks.store');
+    Route::get('/bankalar/{id}', [FinansController::class, 'showBanka'])->name('finans.banks.show');
+    Route::get('/bankalar/{id}/edit', [FinansController::class, 'editBanka'])->name('finans.banks.edit');
+    Route::put('/bankalar/{id}', [FinansController::class, 'updateBanka'])->name('finans.banks.update');
+    Route::delete('/bankalar/{id}', [FinansController::class, 'destroyBanka'])->name('finans.banks.destroy');
+
+    //Kasa CRUD işlemerlri
+
+
+
+
+
+});
 /*Personel*/
 Route::get('/personel',[PersonelController::class,'personel'])->name('personel.personel');
 

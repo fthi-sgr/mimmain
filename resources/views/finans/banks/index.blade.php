@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 
 @section('title')
-    Cari listesi
+    Banka Hesapları
 @endsection
 
 @section('css')
@@ -15,17 +15,17 @@
             <div class="card">
                 <!-- Menu Trigger For Mobile -->
                 <div class="">
-                    <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
-                        <h5><span class="title">Cariler</span></h5>
+                    <a href="{{ route('finans.banks.index') }}" class="btn btn-primary btn-block">
+                        <h5><span class="title">Kayıtlı Bankalar</span></h5>
                     </a>
                 </div>
 
                 <div class="header">
 
                     <div class="clearfix">
-                        <a href="#" class="btn btn-primary">Şirket Carileri</a>
-                        <a href="#" class="btn btn-primary">Personel Carileri</a>
-                        <a href="{{ route('caris.create') }}" class="btn btn-primary pull-right">Cari Oluştur</a>
+
+                        <a href="{{ route('finans.banks.create') }}" class="btn btn-primary pull-right">Banka Hesabı
+                            Ekle</a>
                     </div>
                 </div>
                 <div class="body">
@@ -33,40 +33,31 @@
                         <table class="table table-striped table-hover dataTable js-exportable">
                             <thead>
                                 <tr>
-                                    <th> <strong>ID</strong></th>
-                                    <th><strong>Cari Kodu</strong></th>
-                                    <th><strong>Cari Adı</strong></th>
-                                    <th><strong>Cari Tipi</strong></th>
-                                    <th><strong>Kısa Ad</strong></th>
-                                    <th><strong>Etiket</strong></th>
-                                    <th><strong>Vergi Numarası</strong></th>
 
-                                    <th>İşlemler</th>
+                                    <th><strong>ID</strong></th>
+                                    <th><strong>Banka Adı</strong></th>
+                                    <th><strong>Etiketler</strong></th>
+                                    <th><strong>Banka-Şube</strong></th>
+                                    <th><strong>IBAN</strong></th>
+                                    <th><strong>Açılış Tarihi</strong></th>
+                                    <th><strong>Para Birimi</strong></th>
+                                    <th><strong>Bakiye</strong></th>
+                                    <th><strong>İşlemler</strong></th>
+
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th> ID</th>
-                                    <th>Cari Kodu</th>
-                                    <th>Cari Adı</th>
-                                    <th>Cari Tipi</th>
-                                    <th>Kısa Ad</th>
-                                    <th>Etiket</th>
-                                    <th>Vergi Numarası</th>
 
-                                    <th>İşlemler</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
-                                @foreach ($caris as $cari)
+                                @foreach ($banks as $banka)
                                     <tr>
-                                        <td>{{ $cari->id }}</td>
-                                        <td>{{ $cari->cari_kodu }}</td>
-                                        <td>{{ $cari->cari_adi }}</td>
-                                        <td>{{ $cari->cari_tipi }}</td>
-                                        <td>{{ $cari->kisa_ad }}</td>
-                                        <td>{{ $cari->cari_etiket }}</td>
-                                        <td>{{ $cari->vergi_no }}</td>
+                                        <td>{{ $banka->id }}</td>
+                                        <td>{{ $banka->banka_adi }}</td>
+                                        <td>{{ $banka->etiket }}</td>
+                                        <td>{{ $banka->banka_sube }}</td>
+                                        <td>{{ $banka->iban }}</td>
+                                        <td>{{ $banka->acilis_tarihi }}</td>
+                                        <td>{{ $banka->para_birimi }}</td>
+                                        <td>{{ $banka->bakiye }}</td>
                                         <td>
 
                                             <div class="header d-flex justify-content-center">
@@ -78,10 +69,10 @@
                                                             data-toggle="dropdown" role="button" aria-haspopup="true"
                                                             aria-expanded="false"></a>
                                                         <ul class="dropdown-menu theme-bg gradient">
-                                                            <li><a href="{{ route('caris.show', [$cari->id]) }}"><i
+                                                            <li><a href="{{ route('finans.banks.show', [$banka->id]) }}"><i
                                                                         class="dropdown-icon fa fa-eye"></i> Ayrıntılar</a>
                                                             </li>
-                                                            <li><a href="{{ route('caris.edit', [$cari->id]) }}"><i
+                                                            <li><a href="{{ route('finans.banks.edit', [$banka->id]) }}"><i
                                                                         class="dropdown-icon fa fa-share-alt"></i>
                                                                     Düzenle</a></li>
                                                             <li><a href="javascript:void(0);"><i

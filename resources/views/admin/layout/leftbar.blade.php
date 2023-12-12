@@ -75,7 +75,7 @@
                         <li>
                             <a href="#Finans" class="has-arrow"><i class="fa fa-money"></i><span>Finans</span></a>
                             <ul>
-                                <li><a href="#">Banka Hesapları</a></li>
+                                <li><a href="{{ route('finans.banks.index') }}">Banka Hesapları</a></li>
                                 <li><a href="#">Kasalar</a></li>
                                 <li><a href="page-forgot-password.html">Kredi Kartı</a></li>
                                 <li><a href="{{route('caris.index')}}">Online Hesaplar</a></li>

@@ -29,7 +29,6 @@
 <link rel="stylesheet" href="{{ asset('admin/assets/css/mooli.min.css') }}">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
 
 @yield('css')
 </head>
@@ -123,6 +122,11 @@
 <!-- Project core js file minify with grunt -->
 <script src="{{ asset('admin/assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('admin/assets/js/index.js') }}"></script>
+<!-- pdfmake için bağlantı -->
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+
 
 
 

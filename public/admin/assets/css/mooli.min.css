@@ -2331,8 +2331,8 @@ html.fullscreen-bg #wrapper {
 }
 .card .header .header-dropdown {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 0px;
+    right: 65px;
     list-style: none;
 }
 .card .header .header-dropdown li {

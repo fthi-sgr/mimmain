@@ -10,20 +10,18 @@ $(function () {
                 text: 'Kopya' //özel metni belirleme
            } ,
            {
-                extend:'print',
-                text:'Yazdır'
-           },
-            {
-                extend:'pdf',
-                tex:'PDF İndir',//Buton metni
-                filename:'Tablo',//İndirilen Pdf dosyasının adı
-                Title:'Tablo Başlığı',//PDF başlığı
-
-                exportOption:{
-                    columns:[0,1,2,3]// PDF'e dahil edilecek sütunlar
-                }
-
-            },
+            extend: 'print',
+            text:'Yazdır',
+            exportOptions: {
+                columns: [0,1,2,3, 4,5,6]
+            }
+        },
+           {
+            extend: 'pdf',
+            exportOptions: {
+                columns: [0,1,2,3,4 , 5,6]
+            }
+        },
         ]
 
 

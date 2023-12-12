@@ -84,29 +84,54 @@ class CariController extends Controller
     {
         $id = $request->id;
 
+        // Form validasyonu ekle
+        $this->validate($request, [
+            'cari_kodu' => 'required',
+            'cari_turu' => 'required',
+            'cari_adi' => 'required',
+            'cari_tipi'=>'required',
+            'kisa_ad'=>'required',
+            'cari_etiket'=>'required',
+            'vergi_no'=>'required',
+            'vergi_dairesi'=>'required',
+            'yetkili'=>'required',
+            'yetkili_tel'=>'required',
+            'email'=>'required',
+            'vade_gunu'=>'required',
+            'iskonto'=>'required',
+            'referans'=>'required',
+            'aciklama'=>'required',
+            // ... diğer alanlar için gereken kuralları ekleyin
+        ]);
+
         try {
+            // ID'ye sahip cari kaydını bul
             $cari = Cari::findOrFail($id);
 
-            $cari->update([
-                'cari_kodu' => $request->cari_kodu,
-                'cari_turu' => $request->cari_turu,
-                'cari_adi' => $request->cari_adi,
-                'cari_tipi' => $request->cari_tipi,
-                'kisa_ad' => $request->kisa_ad,
-                'cari_etiket' => $request->cari_etiket,
-                'vergi_no' => $request->vergi_no,
-                'vergi_dairesi' => $request->vergi_dairesi,
-                'yetkili' => $request->yetkili,
-                'yetkili_tel' => $request->yetkili_tel,
-                'email' => $request->email,
-                'vade_gunu' => $request->vade_gunu,
-                'iskonto' => $request->iskonto,
-                'referans' => $request->referans,
-                'aciklama' => $request->aciklama,
-            ]);
+            // Model özelliklerini güncelle
+            $cari->cari_kodu = $request->cari_kodu;
+            $cari->cari_turu = $request->cari_turu;
+            $cari->cari_adi = $request->cari_adi;
+            $cari->cari_tipi = $request->cari_tipi;
+            $cari->kisa_ad = $request->kisa_ad;
+            $cari->cari_etiket = $request->cari_etiket;
+            $cari->vergi_no = $request->vergi_no;
+            $cari->vergi_dairesi = $request->vergi_dairesi;
+            $cari->yetkili = $request->yetkili;
+            $cari->yetkili_tel = $request->yetkili_tel;
+            $cari->email = $request->email;
+            $cari->vade_gunu = $request->vade_gunu;
+            $cari->iskonto = $request->iskonto;
+            $cari->referans = $request->referans;
+            $cari->aciklama = $request->aciklama;
 
+            // Güncellenmiş kaydı kaydet
+            $cari->save();
+
+            // Cari listesi sayfasına yönlendir
             return redirect()->route('caris.index')->with('success', 'Cari başarıyla güncellendi.');
         } catch (\Exception $e) {
+            // Hata durumunda hatayı göster ve geri dön
             return redirect()->back()->with('error', 'Cari güncellenirken bir hata oluştu.');
         }
     }
