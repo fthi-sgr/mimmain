@@ -65,8 +65,9 @@ class FinansController extends Controller
         }
 
 
-    public function edit(Request $request)
+    public function editBanka(Request $request)
     {
+
         $id = $request->id;
         $data = [
             'banka' => Banka::where('id', $id)->first(),
@@ -77,6 +78,8 @@ class FinansController extends Controller
     }
     public function updateBanka(Request $request)
     {
+
+
         $id = $request->id;
 
         // Form validasyonu ekle
@@ -91,17 +94,16 @@ class FinansController extends Controller
             'banka_hesap_adi' => 'required',
             'hesap_no' => 'required',
             'aciklama' => 'required',
-
-
             // ... diğer alanlar için gereken kuralları ekleyin
         ]);
 
         try {
+
             // ID'ye sahip cari kaydını bul
             $banka = Banka::findOrFail($id);
 
             // Model özelliklerini güncelle
-            $banka->banka_adi =$request->banka_adi;
+            $banka->banka_adi = $request->banka_adi;
             $banka->etiket = $request->etiket;
             $banka->banka_sube = $request->banka_sube;
             $banka->iban = $request->iban;
@@ -111,18 +113,19 @@ class FinansController extends Controller
             $banka->banka_hesap_adi = $request->banka_hesap_adi;
             $banka->hesap_no = $request->hesap_no;
             $banka->aciklama = $request->aciklama;
-
             $banka->save();
+
+
 
             // Banka listesi sayfasına yönlendir
             return redirect()->route('finans.banks.index')->with('success', 'Banka başarıyla güncellendi.');
+
         } catch (\Exception $e) {
             // Hata durumunda hatayı göster ve geri dön
             return redirect()->back()->with('error', 'Banka güncellenirken bir hata oluştu.');
         }
     }
-
-    public function destroy(Cari $cari)
+    public function destroyBanka(Banka $banka)
     {
         $banka->delete();
         return redirect()->route('function.banks.index')

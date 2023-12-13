@@ -91,7 +91,7 @@ Route::prefix('finans')->group(function () {
     Route::post('/bankalar', [FinansController::class, 'storeBanka'])->name('finans.banks.store');
     Route::get('/bankalar/{id}', [FinansController::class, 'showBanka'])->name('finans.banks.show');
     Route::get('/bankalar/{id}/edit', [FinansController::class, 'editBanka'])->name('finans.banks.edit');
-    Route::put('/bankalar/{id}', [FinansController::class, 'updateBanka'])->name('finans.banks.update');
+    Route::post('/bankalar/update/{id}', [FinansController::class, 'updateBanka'])->name('finans.banks.update');
     Route::delete('/bankalar/{id}', [FinansController::class, 'destroyBanka'])->name('finans.banks.destroy');
 
     //Kasa CRUD işlemerlri

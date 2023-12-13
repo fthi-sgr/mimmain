@@ -13,13 +13,13 @@ $(function () {
             extend: 'print',
             text:'Yazdır',
             exportOptions: {
-                columns: [0,1,2,3, 4,5,6]
+                columns: ':visible'
             }
         },
            {
             extend: 'pdf',
             exportOptions: {
-                columns: [0,1,2,3,4 , 5,6]
+                columns: ':visible'
             }
         },
         ]

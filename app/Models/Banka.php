@@ -9,7 +9,8 @@ class Banka extends Model
 {
     protected $table='banks';
     //protected $fillable= ['banka_adi','etiket','banka_sube','iban','para_birimi','bakiye','banka_hesap_adi','hesap_no','aciklama'];
-    protected $dates = ['acilis_tarihi'];
+    protected $fillable = ['banka_adi', 'etiket', 'banka_sube', 'iban',  'acilis_tarihi', 'para_birimi', 'bakiye','banka_hesap_adi','hesap_no','aciklama'];
+
     public $timestamps=false;
 
 }

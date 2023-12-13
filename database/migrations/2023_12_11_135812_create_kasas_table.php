@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('kasas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('kasa_adi')->nullable();
+            $table->string('kasa_etiket')->nullable();
+            $table->date('acilis_tarihi')->nullable();
+            $table->string('para_birimi')->nullable();
+            $table->decimal('bakiye')->nullable();
+            $table->string('aciklama')->nulabble();
+
         });
     }
 
