@@ -12,25 +12,25 @@ class CreateCarisTable extends Migration
 
             // $table->bigIncrements('id');
             // $table->unsignedBigInteger('company_id')->comment('hangi firmaya ait olduğunu belirtmek için kullanılacak')->nullable();
-            
+
             $table->id('id'); // otomatik artam ID sütunu
-            $table->string('cari_kodu');
-            $table->string('cari_turu');
-            $table->string('cari_adi');
-            $table->string('cari_tipi');
-            $table->string('kisa_ad');
-            $table->string('cari_etiket');
-            $table->string('vergi_no');
-            $table->string('vergi_dairesi');
-            $table->string('yetkili');
-            $table->string('yetkili_tel');
-            $table->string('email');
-            $table->integer('vade_gunu');
-            $table->decimal('iskonto', 3, 1);
-            $table->string('referans');
-            $table->text('aciklama');
+            $table->string('cari_kodu')->unique();
+            $table->string('cari_turu')->nullable();
+            $table->string('cari_adi')->nullable();
+            $table->string('cari_tipi')->nullable();
+            $table->string('kisa_ad')->nullable();
+            $table->string('cari_etiket')->nullable();
+            $table->string('vergi_no')->nullable();
+            $table->string('vergi_dairesi')->nullable();
+            $table->string('yetkili')->nullable();
+            $table->string('yetkili_tel')->nullable();
+            $table->string('email')->nullable();
+            $table->integer('vade_gunu')->nullable();
+            $table->decimal('iskonto', 3, 1)->nullable();
+            $table->string('referans')->nullable();
+            $table->text('aciklama')->nullable();
             $table->timestamps();
-           
+
         });
     }
 

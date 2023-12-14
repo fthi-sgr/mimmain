@@ -50,7 +50,7 @@ class FinansController extends Controller
         }catch(\Exception $e){
             dd($e->getMessage());
 
-            return redirect()->back()->with('eror', "Banka hesabu eklenirken bir hata oluşu!");
+            return redirect()->back()->with('eror', "Banka hesabı eklenirken bir hata oluşu!");
         }
 
     }

@@ -17,14 +17,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CariController;
 use App\Http\Controllers\AnasayfaController;
 use App\Http\Controllers\PersonelController;
-use App\Http\Controllers\ElementsController;
-use App\Http\Controllers\FormsController;
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UrunController;
 use App\Http\Controllers\HizmetController;
 use App\Http\Controllers\DepoController;
 use App\Http\Controllers\FinansController;
+use App\Http\Controllers\SiparisController;
 
 
 //Anasayfa
@@ -101,6 +99,17 @@ Route::prefix('finans')->group(function () {
 
 
 });
+
+// Satıs islemleri
+Route::prefix('satis')->group(function(){
+
+    Route::get('/asiparis',[SiparisController::class,'index'])->name('satis.asiparis.index');
+    Route::get('/asiparis/create',[SiparisController::class,'create'])->name('satis.asiparis.create');
+    Route::Post('asiparis',[SiparisController::class,'store'])->name('satis.asiparis.store');
+});
+
+
+
 /*Personel*/
 Route::get('/personel',[PersonelController::class,'personel'])->name('personel.personel');
 

@@ -35,11 +35,17 @@
 
                         <li class="header">Menü</li>
                         <li>
-                            <a href="#" ><i class="fa fa-calculator"></i><span>Satış Yönetimi</span></a>
+                            <a href="#Satış" class="has-arrow" ><i class="fa fa-calculator"></i><span>Satış Yönetimi</span></a>
+                            <ul>
+                                <li><a href="#">Satış Faturaları</a></li>
+                                <li><a href="page-register.html">Satış İrsaliyeleri</a></li>
+                                <li><a href="{{route('satis.asiparis.index')}}">Alınan Siparişler</a></li>
+                                <li><a href="#">Tekrarlı Satış İşlemleri</a></li>
+                            </ul>
 
                         </li>
                         <li>
-                            <a href="#" ><i class="fa fa-file-text-o"></i><span>Satın Alma Yöneitimis</span></a>
+                            <a href="#"class="has-arrow" ><i class="fa fa-file-text-o"></i><span>Satın Alma Yöneitimis</span></a>
 
                         </li>
                         <li>
@@ -54,13 +60,14 @@
                         </li>
 
                         <li>
-                            <a href="#Cariler" class="has-arrow"><i class="fa fa-folder"></i><span>Cariler</span></a>
+                            <a href="#Cariler" class="has-arrow"><i class="fa fa-folder"></i><span>Cari Hesaplar</span></a>
                             <ul>
-                                <li><a href="page-login.html">Login</a></li>
-                                <li><a href="page-register.html">Register</a></li>
-                                <li><a href="page-forgot-password.html">Forgot Password</a></li>
-                                <li><a href="{{route('depo.index')}}">Page 404</a></li>
-                                <li><a href="{{route('caris.index')}}">Cari listesi</a></li>
+                                <li><a href="{{route('caris.index')}}">Genel Cariler</a></li>
+                                <li><a href="page-login.html">Potansiyel Müşteriler</a></li>
+                                <li><a href="page-register.html">Personel Carileri</a></li>
+                                <li><a href="page-forgot-password.html">Ortaklar</a></li>
+                                <li><a href="{{route('depo.index')}}">Tekrarlı maaşlar</a></li>
+
                             </ul>
                         </li>
                         <li>
