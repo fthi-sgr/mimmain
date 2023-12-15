@@ -15,18 +15,14 @@
             <div class="card">
                 <!-- Menu Trigger For Mobile -->
                 <div class="">
-                    <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
+                    <a href="{{ route('urunhizmet.uruns.index') }}" class="btn btn-primary btn-block">
                         <span class="title">Ürün ve Hizmetler</span>
                     </a>
                 </div>
 
                 <div class="header">
                     <div class="clearfix ">
-                        <a href="{{ route('uruns.index') }}" class="btn btn-primary" title="Ürünler">Ürünler</a>
-                        <a href="{{ route('hizmet.index') }}" class="btn btn-primary">Hizmetler</a>
-                        <a href="{{ route('depo.index') }}" class="btn btn-primary">Depolar</a>
-                        <hr>
-                        <a href="{{ route('uruns.create') }}" class="btn btn-primary pull-right">Ürün Oluştur</a>
+                        <a href="{{ route('urunhizmet.uruns.create') }}" class="btn btn-primary pull-right">Ürün Oluştur</a>
                     </div>
                     <h4><strong id="dynamicTitle">Ürünler</strong></h4>
 
@@ -81,19 +77,5 @@
     </script>
 
     <script src="{{ asset('admin/assets/js/pages/tables/jquery-datatable.js') }}"></script>
-    <!-- jsPDF JavaScript dosyası -->
-    {{-- <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js">
-    </script>
 
-    <script src="{{ asset('admin/assets/js/pages/tables/jquery-datatable.js') }}"></script> --}}
-    <script>
-        $(document).ready(function() {
-            // Her bir butona tıklama olayını ekle
-            $('.btn-primary').on('click', function() {
-                // Tıklanan butonun title'ını al ve "dynamicTitle" id'li öğenin içeriğine ekle
-                var buttonTitle = $(this).attr('title');
-                $('#dynamicTitle').text(buttonTitle);
-            });
-        });
-    </script>
 @endsection

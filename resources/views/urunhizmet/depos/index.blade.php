@@ -14,24 +14,20 @@
         <div class="col-lg-12">
             <div class="card">
                 <!-- Menu Trigger For Mobile -->
-              <!-- Menu Trigger For Mobile -->
-              <div class="">
-                <a href="{{ route('depo.index') }}" class="btn btn-primary btn-block">
-                    <span class="title">Ürün ve Hizmetler</span>
-                </a>
-            </div>
-
-            <div class="header">
-                <div class="clearfix ">
-                    <a href="{{ route('uruns.index') }}" class="btn btn-primary" title="Ürünler">Ürünler</a>
-                    <a href="{{ route('hizmet.index') }}" class="btn btn-primary">Hizmetler</a>
-                    <a href="{{ route('depo.index') }}" class="btn btn-primary">Depolar</a>
-                    <hr>
-                    <a href="{{ route('depos.create') }}" class="btn btn-primary pull-right">Depo Ekle</a>
+                <!-- Menu Trigger For Mobile -->
+                <div class="">
+                    <a href="#" class="btn btn-primary btn-block">
+                        <span class="title">Ürün ve Hizmetler</span>
+                    </a>
                 </div>
-                <h4><strong id="dynamicTitle">Depolar</strong></h4>
 
-            </div>
+                <div class="header">
+                    <h4><strong>Depolar</strong></h4>
+                    <div class="clearfix ">
+                        <a href="{{ route('urunhizmet.depos.create') }}" class="btn btn-primary ">Depo Ekle</a>
+                    </div>
+                </div>
+
                 <div class="body">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover dataTable js-exportable">
@@ -53,9 +49,10 @@
 
 
                                         <td>
-                                            <a href="{{ route('depos.edit', $depo->id) }}"
+                                            <a href="{{ route('urunhizmet.depos.show')}}"></a>
+                                            <a href="{{ route('urunhizmet.depos.edit', $depo->id) }}"
                                                 class="btn btn-warning">Düzenle</a>
-                                            <form action="{{ route('depos.destroy', $depo->id) }}" method="POST"
+                                            <form action="{{ route('urunhizmet.depos.destroy', $depo->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')

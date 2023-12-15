@@ -49,13 +49,19 @@
 
                         </li>
                         <li>
-                            <a href="{{route('depo.index')}}" ><i class="fa fa-clone"></i><span>Genel Gider Yönetimi</span></a>
+                            <a href="" ><i class="fa fa-clone"></i><span>Genel Gider Yönetimi</span></a>
 
 
                         </li>
 
                         <li>
-                            <a href="{{route('uruns.index')}}" ><i class="fa fa-database"></i><span>Ürün ve Hizmetler</span></a>
+                            <a href="#Ürünler Ve Hizmetler" class="has-arrow"><i class="fa fa-database"></i><span>Ürün ve Hizmetler</span></a>
+                            <ul>
+                                <li><a href="{{route('urunhizmet.uruns.index')}}">Ürünler</a></li>
+                                <li><a href="{{route('urunhizmet.hizmet.index')}}">Hizmetler</a></li>
+                                <li><a href="{{route('urunhizmet.depos.index')}}">Depolar</a></li>
+
+                            </ul>
 
                         </li>
 
@@ -66,7 +72,7 @@
                                 <li><a href="page-login.html">Potansiyel Müşteriler</a></li>
                                 <li><a href="page-register.html">Personel Carileri</a></li>
                                 <li><a href="page-forgot-password.html">Ortaklar</a></li>
-                                <li><a href="{{route('depo.index')}}">Tekrarlı maaşlar</a></li>
+                                <li><a href="#">Tekrarlı maaşlar</a></li>
 
                             </ul>
                         </li>

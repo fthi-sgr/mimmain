@@ -5,35 +5,39 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Urun;
+use App\Models\Hizmet;
+use App\Models\Depo;
 
 class UrunController extends Controller
 {
-    public function index()
+//Ürünler Crud Bölümü
+    public function indexUrun()
     {
         $uruns = Urun::all();
-        return view('uruns.index', compact('uruns'));
+        return view('urunhizmet.uruns.index', compact('uruns'));
     }
 
-    public function create()
+    public function createUrun()
     {
-        return view('uruns.create');
+        return view('urunhizmet.uruns.create');
     }
 
-    public function store(Request $request)
+    public function storeUrun(Request $request)
     {
         try {
-            Urun::create([
-                'urun_kodu' => $request->urun_kodu,
-                'urun_adi' => $request->urun_adi,
-                'barkod' => $request->barkod,
-                'urun_etiketi' => $request->urun_etiketi,
-                'stok_saklama_birimi' => $request->stok_saklama_birimi,
-                'mensei' => $request->mensei,
-                'gtip_no' => $request->gtip_no,
-                'aciklama' => $request->aciklama,
-            ]);
+                $urun= new Urun();
+                $urun->urun_kodu = $request->urun_kodu;
+                $urun->urun_adi = $request->urun_adi;
+                $urun->barkod = $request->barkod;
+                $urun->urun_etiketi = $request->urun_etiketi;
 
-            return redirect()->route('uruns.index')->with('success', 'Ürün başarıyla eklendi.');
+                $urun->mensei = $request->mensei;
+                $urun->gtip_no = $request->gtip_no;
+                $urun->aciklama = $request->aciklama;
+                $urun->save();
+
+
+            return redirect()->route('urunhizmet.uruns.index')->with('success', 'Ürün başarıyla eklendi.');
         } catch (\Exception $e) {
             // Hata durumunda hatayı göster ve geri dön
             dd($e->getMessage());
@@ -41,41 +45,243 @@ class UrunController extends Controller
         }
     }
 
-    public function show(Urun $urun)
+    public function showUrun(Request $request)
     {
-        return view('uruns.show', compact('urun'));
+        $id =$request->id;
+        $data=[
+            'urun'=>Urun::Where('id',$id)->First(),
+        ];
+        return view('urunhizmet.uruns.show', $data);
     }
 
-    public function edit(Urun $urun)
+    public function editUrun(Request $request)
     {
-        return view('uruns.edit', compact('urun'));
+        $id =$request->id;
+        $data=[
+            'urun'=>Urun::Where('id',$id)->First(),
+        ];
+        return view('urunhizmet.uruns.edit',$data);
     }
 
-    public function update(Request $request, Urun $urun)
+    public function updateUrun(Request $request)
     {
-        try {
-            $urun->update([
-                'urun_kodu' => $request->urun_kodu,
-                'urun_adi' => $request->urun_adi,
-                'barkod' => $request->barkod,
-                'urun_etiketi' => $request->urun_etiketi,
-                'stok_saklama_birimi' => $request->stok_saklama_birimi,
-                'mensei' => $request->mensei,
-                'gtip_no' => $request->gtip_no,
-                'aciklama' => $request->aciklama,
+            $id =$request->id;
+
+            $this->validate($request,[
+                'urun_kodu' => 'required',
+                'urun_adi' =>'required',
+                'barkod' => 'required',
+                'urun_etiketi' =>'required',
+
+                'mensei' => 'required',
+                'gtip_no' =>'required',
+                'aciklama' =>'required',
             ]);
 
-            return redirect()->route('uruns.index')->with('success', 'Ürün başarıyla güncellendi.');
-        } catch (\Exception $e) {
+            try{
+                $urun =Urun::findOrFail($id);
+                $urun->urun_kodu = $request->urun_kodu;
+                $urun->urun_adi = $request->urun_adi;
+                $urun->barkod = $request->barkod;
+                $urun->urun_etiketi = $request->urun_etiketi;
+
+                $urun->mensei = $request->mensei;
+                $urun->gtip_no = $request->gtip_no;
+                $urun->aciklama = $request->aciklama;
+
+
+                $urun->save();
+
+
+                return redirect()->route('urunhizmet.uruns.index')->with('success', 'Ürün başarıyla güncellendi.');
+             } catch (\Exception $e) {
             // Hata durumunda hatayı göster ve geri dön
+                dd($e->getMessage());
+                return redirect()->back()->with('error', 'Ürün güncellenirken bir hata oluştu!');
+            }
+    }
+
+    public function destroyUrun(Urun $urun)
+    {
+        $urun->delete();
+        return redirect()->route('urunhizmet.uruns.index')->with('success', 'Ürün başarıyla silindi.');
+    }
+
+//Hizmetler Crud Bölümü
+    public function indexHizmet()
+    {
+
+        $hizmets = Hizmet::all();
+        return view('urunhizmet.hizmet.index', compact('hizmets'));
+    }
+
+    public function createhizmet()
+    {
+        return view('urunhizmet.hizmet.create');
+    }
+
+    public function storeHizmet(Request $request)
+    {
+        try{
+
+            $hizmet =new Hizmet();
+            $hizmet->hizmet_kodu= $request->hizmet_kodu;
+            $hizmet->hizmet_adi= $request->hizmet_adi;
+            $hizmet->hizmet_birimi= $request->hizmet_brimi;
+            $hizmet->barkod= $request->barkod;
+            $hizmet->hizmet_etiketi= $request ->hizmet_etiketi;
+            $hizmet->aciklama= $request->aciklama;
+            $hizmet->kdv_id = $request->kdv_id;
+            $hizmet->save();
+
+            return redirect()->route('urunhizmet.hizmet.index');
+        }catch(\Exception $e){
             dd($e->getMessage());
-            return redirect()->back()->with('error', 'Ürün güncellenirken bir hata oluştu!');
+
+            return redirect()->back()->with('error', 'hizmet eklenirken bir hata oluştu.');
         }
     }
 
-    public function destroy(Urun $urun)
+    public function showHizmet(Request $request)
     {
-        $urun->delete();
-        return redirect()->route('uruns.index')->with('success', 'Ürün başarıyla silindi.');
+        $id = $request-> id;
+        $data=[
+            'hizmet'=>Hizmet::where('id',$id)->first(),
+        ];
+        return view('urunhizmet.hizmet.show',$data);
     }
+
+    public function editHizmet(Request $request)
+    {
+        $id = $request->id;
+        $data = [
+            'hizmet' => Hizmet::where('id', $id)->first(),
+
+
+        ];
+        return view('urunhizmet.hizmet.edit' , $data);
+    }
+
+    public function updateHizmet(Request $request)
+    {
+        $id = $request->id;
+
+        $hizmet = Hizmet::where('id', $id)->first();
+        $hizmet =new Hizmet();
+        $hizmet->hizmet_kodu= $request->hizmet_kodu;
+        $hizmet->hizmet_adi= $request->hizmet_adi;
+        $hizmet->hizmet_birimi= $request->hizmet_brimi;
+        $hizmet->barkod= $request->barkod;
+        $hizmet->hizmet_etiketi= $request ->hizmet_etiketi;
+        $hizmet->aciklama= $request->aciklama;
+        $hizmet->kdv_id = $request->kdv_id;
+        $hizmet->save();
+
+        return redirect()->route('hizmet.index')->with('success','Hizmet güncellendi.');
+
+    }
+    public function destroyHizmet (Hizmet $hizmet)
+    {
+        $hizmet->delete();
+        return redirect()->route('hizmet.index')->with('success', 'Silindi');
+    }
+
+//Depo Crud Bölümü
+    public function indexDepo()
+    {
+     $depos= Depo::all();
+     return view('urunhizmet.depos.index', compact ('depos'));
+
+    }
+
+    public function createDepo()
+    {
+
+     return view('urunhizmet.depos.create');
+    }
+
+    public function storeDepo(Request $request)
+    {
+
+         try{
+
+             $depo =new Depo();
+             $depo->depo_kodu = $request->depo_kodu;
+             $depo->depo_adi = $request ->depo_adi;
+             $depo->acilis_tarihi = $request-> acilis_tarihi;
+             $depo->adres = $request->adres;
+             $depo->il= $request ->il;
+             $depo->ilce= $request->ilce;
+             $depo->posta_kodu=$request->posta_kodu;
+             $depo->save();
+
+
+         return redirect()->route('urunhizmet.depos.index');
+     }catch(\Exception $e){
+         dd($e->getMessage());
+         return redirect()->back()->with('error','Depo eklenirken bir hata oluştu');
+
+     }
+    }
+
+    public function showDepo(Request $request)
+     {
+         $id = $request->id;
+         $data = [
+             'depo' => Depo::where('id', $id)->first(),
+
+         ];
+         return view('urunhizmet.depos.show', $data);
+     }
+
+     public function editDepo(Request $request)
+     {
+         $id = $request->id;
+         $data = [
+             'depo' => Depo::where('id', $id)->first(),
+
+
+         ];
+         return view('urunhizmet.depos.edit' , $data);
+     }
+     public function updateDepo(Request $request)
+     {
+
+         $id = $request->id;
+         // try {
+
+             $depo =  Depo::where('id', $id)->first();
+
+             $depo->depo_kodu = $request->depo_kodu;
+             $depo->depo_adi = $request ->depo_adi;
+             $depo->acilis_tarihi = $request-> acilis_tarihi;
+             $depo->adres = $request->adres;
+             $depo->il= $request ->il;
+             $depo->ilce= $request->ilce;
+             $depo->posta_kodu=$request->posta_kodu;
+             $depo->save();
+
+             return redirect()->route('urunhizmet.depos.index')->with('success', 'Depo başarıyla güncellendi.');
+
+     }
+     public function destroyDepo(Depo $depo)
+     {
+         $depo->delete();
+         return redirect()->route('urunhizmet.depos.index')
+             ->with('success', 'Cari başarıyla silindi.');
+     }
+
+     public function getIller()
+     {
+         $iller = Depo::distinct('il')->pluck('il');
+         return response()->json($iller);
+     }
+
+     public function getIlceler($il)
+     {
+         $ilceler = Depo::where('il', $il)->distinct('ilce')->pluck('ilce');
+         return response()->json($ilceler);
+     }
+
+
 }

@@ -19,8 +19,8 @@ use App\Http\Controllers\AnasayfaController;
 use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UrunController;
-use App\Http\Controllers\HizmetController;
-use App\Http\Controllers\DepoController;
+
+
 use App\Http\Controllers\FinansController;
 use App\Http\Controllers\SiparisController;
 
@@ -41,33 +41,44 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('authentication.l
 //ürünler ve hizmetler route--------------------------------------------------------
 //Route::get('/urunhizmet',[TumuController::class,'index'])->name('urunhizmet.index');
 
-//Urunler Route
-Route::get('/urunlist',[UrunController::class,'index'])->name('uruns.index');
-Route::get('/uruncreate', [UrunController::class, 'create'])->name('uruns.create');
-Route::post('/urunstore', [UrunController::class, 'store'])->name('uruns.store');
-Route::get('/urun/{id}', [UrunController::class, 'show'])->name('uruns.show');
-Route::get('/urun/{id}/edit', [UrunController::class, 'edit'])->name('uruns.edit');
-Route::post('/urun/update/{id}', [UrunController::class, 'update'])->name('uruns.update');
-Route::delete('/urun/{id}', [UrunController::class, 'destroy'])->name('uruns.destroy');
+// Ürünler ve Hizmetler Page Route
+Route::prefix('urunhizmet')->group(function(){
+    //Urunler Route
+    Route::get('/urunlist',[UrunController::class,'indexUrun'])->name('urunhizmet.uruns.index');
+    Route::get('/urun/create', [UrunController::class, 'createUrun'])->name('urunhizmet.uruns.create');
+    Route::post('/urunstore', [UrunController::class, 'storeUrun'])->name('urunhizmet.uruns.store');
+    Route::get('/urun/{id}', [UrunController::class, 'showUrun'])->name('urunhizmet.uruns.show');
+    Route::get('/urun/{id}/edit', [UrunController::class, 'editUrun'])->name('urunhizmet.uruns.edit');
+    Route::post('/urun/update/{id}', [UrunController::class, 'updateUrun'])->name('urunhizmet.uruns.update');
+    Route::delete('/urun/{id}', [UrunController::class, 'destroyUrun'])->name('urunhizmet.uruns.destroy');
 
-// Hizmet Route
-Route::get('/hizmetlist',[HizmetController::class,'index'])->name('hizmet.index');
-Route::get('/hizmetcreate', [HizmetController::class, 'create'])->name('hizmet.create');
-Route::post('/hizmetstore', [HizmetController::class, 'store'])->name('hizmet.store');
-Route::get('/hizmet/{id}', [HizmetController::class, 'show'])->name('hizmet.show');
-Route::get('/hizmet/{id}/edit', [HizmetController::class, 'edit'])->name('hizmet.edit');
-Route::post('/hizmet/update/{id}', [HizmetController::class, 'update'])->name('hizmet.update');
-Route::delete('/hizmet/{id}', [HizmetController::class, 'destroy'])->name('hizmet.destroy');
+    // Hizmet Route
+    Route::get('/hizmetlist',[UrunController::class,'indexHizmet'])->name('urunhizmet.hizmet.index');
+    Route::get('/hizmet/create', [UrunController::class, 'createHizmet'])->name('urunhizmet.hizmet.create');
+    Route::post('/hizmetstore', [UrunController::class, 'storeHşzmet'])->name('urunhizmet.hizmet.store');
+    Route::get('/hizmet/{id}', [UrunController::class, 'showHizmet'])->name('urunhizmet.hizmet.show');
+    Route::get('/hizmet/{id}/edit', [UrunController::class, 'editHizmet'])->name('urunhizmet.hizmet.edit');
+    Route::post('/hizmet/update/{id}', [UrunController::class, 'updateHizmet'])->name('urunhizmet.hizmet.update');
+    Route::delete('/hizmet/{id}', [UrunController::class, 'destroyHizmet'])->name('urunhizmet.hizmet.destroy');
 
-//Dapolar Route
-Route::get('/depolist',[DepoController::class,'index'])->name('depo.index');
-Route::get('/depocreate', [DepoController::class, 'create'])->name('depos.create');
-Route::post('/depostore', [DepoController::class, 'store'])->name('depos.store');
-Route::get('/depo/{id}', [DepoController::class, 'show'])->name('depos.show');
-Route::get('/depo/{id}/edit', [DepoController::class, 'edit'])->name('depos.edit');
-Route::post('/depo/update/{id}', [DepoController::class, 'update'])->name('depos.update');
-Route::delete('/depo/{id}', [DepoController::class, 'destroy'])->name('depos.destroy');
+    //Dapolar Route
+    Route::get('/depolist',[UrunController::class,'indexDepo'])->name('urunhizmet.depos.index');
+    Route::get('/depo/create', [UrunController::class, 'createDepo'])->name('urunhizmet.depos.create');
+    Route::post('/depostore', [UrunController::class, 'storeDepo'])->name('urunhizmet.depos.store');
+    Route::get('/depo/{id}', [UrunController::class, 'showDepo'])->name('urunhizmet.depos.show');
+    Route::get('/depo/{id}/edit', [UrunController::class, 'editDepo'])->name('urunhizmet.depos.edit');
+    Route::post('/depo/update/{id}', [UrunController::class, 'updateDepo'])->name('urunhizmet.depos.update');
+    Route::delete('/depo/{id}', [UrunController::class, 'destroyDepo'])->name('urunhizmet.depos.destroy');
+    Route::get('/get-iller', [UrunController::class, 'getIller']);
+    // İlçeleri getiren route
+    Route::get('/get-ilceler/{il}', [UrunController::class, 'getIlceler']);
 
+    // İlleri getiren route
+
+
+
+
+});
 //----------------------------------------------------------------------------------------------
 //Cari Route
 Route::get('/carilist', [CariController::class, 'index'])->name('caris.index');
