@@ -15,7 +15,7 @@
             <div class="card">
                 <!-- Menu Trigger For Mobile -->
                 <div class="">
-                    <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
+                    <a href="{{ route('caris.index') }}" class="btn btn-primary btn-block">
                         <h5><span class="title">Cariler</span></h5>
                     </a>
                 </div>

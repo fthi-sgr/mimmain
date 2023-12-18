@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Urun;
 use App\Models\Hizmet;
 use App\Models\Depo;
+use App\Models\City;
+use App\Models\District;
 
 class UrunController extends Controller
 {
@@ -200,6 +202,8 @@ class UrunController extends Controller
      return view('urunhizmet.depos.create');
     }
 
+
+
     public function storeDepo(Request $request)
     {
 
@@ -271,17 +275,20 @@ class UrunController extends Controller
              ->with('success', 'Cari başarıyla silindi.');
      }
 
-     public function getIller()
+     public function getCities()
      {
-         $iller = Depo::distinct('il')->pluck('il');
-         return response()->json($iller);
+         $cities = City::all();
+         return response()->json($cities);
      }
-
-     public function getIlceler($il)
+     public function getDistricts($cityId)
      {
-         $ilceler = Depo::where('il', $il)->distinct('ilce')->pluck('ilce');
-         return response()->json($ilceler);
+         try {
+             $city = City::findOrFail($cityId);
+             $districts = $city->districts;
+             return response()->json($districts);
+         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+             return response()->json(['error' => 'Şehir bulunamadı.'], 404);
+         }
      }
-
 
 }

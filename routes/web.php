@@ -19,10 +19,9 @@ use App\Http\Controllers\AnasayfaController;
 use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UrunController;
-
-
 use App\Http\Controllers\FinansController;
 use App\Http\Controllers\SiparisController;
+use App\Http\Controllers\CityDistrictController;
 
 
 //Anasayfa
@@ -69,11 +68,13 @@ Route::prefix('urunhizmet')->group(function(){
     Route::get('/depo/{id}/edit', [UrunController::class, 'editDepo'])->name('urunhizmet.depos.edit');
     Route::post('/depo/update/{id}', [UrunController::class, 'updateDepo'])->name('urunhizmet.depos.update');
     Route::delete('/depo/{id}', [UrunController::class, 'destroyDepo'])->name('urunhizmet.depos.destroy');
-    Route::get('/get-iller', [UrunController::class, 'getIller']);
-    // İlçeleri getiren route
-    Route::get('/get-ilceler/{il}', [UrunController::class, 'getIlceler']);
 
     // İlleri getiren route
+    Route::get('/get-cities', [UrunController::class, 'getCities']);
+
+    // İlçeleri getiren route
+    Route::get('/get-districts/{cityId}', [UrunController::class, 'getDistricts']);
+
 
 
 
