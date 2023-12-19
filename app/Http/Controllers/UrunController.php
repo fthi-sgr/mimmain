@@ -108,6 +108,11 @@ class UrunController extends Controller
         $urun->delete();
         return redirect()->route('urunhizmet.uruns.index')->with('success', 'Ürün başarıyla silindi.');
     }
+    public function fetchUrunAdlari()
+    {
+        $urunAdlari = Urun::pluck('urun_adi');
+        return response()->json($urunAdlari);
+    }
 
 //Hizmetler Crud Bölümü
     public function indexHizmet()

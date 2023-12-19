@@ -47,14 +47,13 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div>
-                                            <div class="form-group">
-                                                <label for="siparis_tarihi" style="color: #59c4bc">Seri No*</label>
-                                                <input type="number" class="form-control" id="siparis_tarihi"
-                                                    name="siparis_tarihi" required>
-                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="siparis_tarihi" style="color: #59c4bc">Seri No*</label>
+                                            <input type="number" class="form-control" id="siparis_tarihi"
+                                                name="siparis_tarihi" required>
+                                            <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
                                         </div>
+
                                     </div>
                                 </div>
 
@@ -76,7 +75,7 @@
                                                 <option value="DOLAR">$-Dolar</option>
                                                 <option value="EURO">€-Euro</option>
                                             </select>
-                                            <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                            <span class="text-danger">{{ $errors->first('para_birimi') }}</span>
                                         </div>
                                     </div>
 
@@ -112,34 +111,150 @@
                             </div>
                         </div>
                     </table>
-                    <hr class="line-dashed">
-
-                    <div class="header text-center">
-                        <h4> <strong>Ürün/Hizmet Bİlgileri</strong></h4>
-                    </div>
-                    <hr>
-                    <div>
-                        <h6><strong>Ürün Bilgileri</strong></h6>
-                    </div>
-                    <div class="clearfix">
-                        <div class="row-mt-10">
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                                <label for="cari_adı" style="color: #59c4bc">Açıklama*</label>
-                                <div class="input-group input-group-flex ">
-
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                {{-- Sipariş ürünnü ekleme bölümü --}}
+                <div class="header text-center">
+                    <h4> <strong>Ürün/Hizmet Bİlgileri</strong></h4>
+                </div>
+                <hr>
+                <div class="header">
+                    <h6><strong>Ürün Bilgileri</strong></h6>
+                </div>
+                <div class="clearfix">
+                    <div class="body">
+                        <table class="table table-striped table-hover dataTable js-exportable">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="cari_adı" style="color: #59c4bc">Ürün/hizmet*</label>
+                                        <div class="input-group input-group-flex ">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="siparis_tarihi" style="color: #59c4bc">Miktar*</label>
+                                                <input type="number" class="form-control" id="siparis_tarihi"
+                                                    name="siparis_tarihi" required>
+                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="siparis_tarihi" style="color: #59c4bc">Birim Fiyat*</label>
+                                                <input type="number" class="form-control" id="siparis_tarihi"
+                                                    name="siparis_tarihi" required>
+                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="siparis_tarihi" style="color: #59c4bc">KDV Oranı*</label>
+                                                <input type="number" class="form-control" id="siparis_tarihi"
+                                                    name="siparis_tarihi" required>
+                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="cari_adı" style="color: #59c4bc">Stok/depo*</label>
+                                        <div class="input-group input-group-flex ">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="siparis_tarihi" style="color: #59c4bc">Seri No*</label>
+                                                <input type="number" class="form-control" id="siparis_tarihi"
+                                                    name="siparis_tarihi" required>
+                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="siparis_tarihi" style="color: #59c4bc">Seri No*</label>
+                                                <input type="number" class="form-control" id="siparis_tarihi"
+                                                    name="siparis_tarihi" required>
+                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="siparis_tarihi" style="color: #59c4bc">Seri No*</label>
+                                                <input type="number" class="form-control" id="siparis_tarihi"
+                                                    name="siparis_tarihi" required>
+                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
+                            <div class="float-right">
+                                <button type="button" class="btn btn-success mb-2 btn-round"><i
+                                        class="fa fa-check-circle"></i> <span>Ürünü Ekle</span></button>
+                                <button type="button" class="btn btn-warning mb-2 btn-round"><i
+                                        class="fa fa-refresh"></i> <span>Ürünü Güncelle</span></button>
+                                <button type="button" class="btn btn-danger mb-2 btn-round"><i
+                                        class="fa fa-trash-o"></i> <span>Danger</span></button>
+                                <button type="button" class="btn btn-info mb-2 btn-round"> <i
+                                        class="fa fa-warning"></i><span> Vazgeç</span></button>
+                            </div>
+                        </table>
                     </div>
-
-
                 </div>
-
             </div>
-
-
         </div>
-
     </div>
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+
+                <div class="header">
+                    <h5><strong>Ürün/Hizmet Listesi</strong></h5>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-striped tablo-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th><strong> Ürün Kodu</strong></th>
+                                    <th><strong> Ürün Adı</strong></th>
+                                    <th><strong> Stok/Depo</strong></th>
+                                    <th><strong> Açıklam</strong></th>
+                                    <th><strong> Miktar</strong></th>
+                                    <th><strong> Birim</strong></th>
+                                    <th><strong> Birim Fiyatı</strong></th>
+                                    <th><strong> Vergi</strong></th>
+                                    <th><strong> Tutar(KDV Dahil)</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sssss</td>
+                                    <td>ssssaaa</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('js')
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js">
+</script>
+
+<script src="{{ asset('admin/assets/js/pages/tables/jquery-datatable.js') }}"></script>
 @endsection

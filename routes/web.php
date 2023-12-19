@@ -50,7 +50,7 @@ Route::prefix('urunhizmet')->group(function(){
     Route::get('/urun/{id}/edit', [UrunController::class, 'editUrun'])->name('urunhizmet.uruns.edit');
     Route::post('/urun/update/{id}', [UrunController::class, 'updateUrun'])->name('urunhizmet.uruns.update');
     Route::delete('/urun/{id}', [UrunController::class, 'destroyUrun'])->name('urunhizmet.uruns.destroy');
-
+    Route::get('/fetch-urun-adlari',[UrunController::class,'fetchUrunAdlari'])->name('urunhizmet.uruns.fetchUrunAdlari');
     // Hizmet Route
     Route::get('/hizmetlist',[UrunController::class,'indexHizmet'])->name('urunhizmet.hizmet.index');
     Route::get('/hizmet/create', [UrunController::class, 'createHizmet'])->name('urunhizmet.hizmet.create');
