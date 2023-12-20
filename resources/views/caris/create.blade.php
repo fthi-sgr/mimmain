@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="">
-                    <a href="{{ route('uruns.index') }}" class="btn btn-primary btn-block">
+                    <a href="{{ route('caris.index') }}" class="btn btn-primary btn-block">
                         <h2> <span class="title">Cariler</span> </h2>
                     </a>
                 </div>

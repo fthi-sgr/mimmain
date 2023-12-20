@@ -89,8 +89,8 @@ Route::get('/caris/{id}', [CariController::class, 'show'])->name('caris.show');
 Route::get('/caris/{id}/edit', [CariController::class, 'edit'])->name('caris.edit');
 Route::post('/caris/update/{id}', [CariController::class, 'update'])->name('caris.update');
 Route::delete('/caris/{id}', [CariController::class, 'destroy'])->name('caris.destroy');
-
-
+Route::get('/get-cari-list',[CariController::class, 'getCariList'])->name('getCariList');
+Route::get('/get-cari-info/{id}',[CariController::class, 'getCariInfo'])->name('getCariInfo');
 
 
 //Finans page Route

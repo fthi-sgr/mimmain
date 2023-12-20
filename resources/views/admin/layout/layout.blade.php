@@ -27,13 +27,15 @@
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/sweetalert/sweetalert.css') }}">
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('admin/assets/css/mooli.min.css') }}">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
 
 
 @yield('css')
 </head>
 
 <body>
+
 
 <div id="body" class="theme-cyan">
        <!-- Overlay For Sidebars -->
@@ -107,7 +109,7 @@
 <script src="{{ asset('admin/assets/bundles/flotscripts.bundle.js') }}"></script><!-- flot charts Plugin Js -->
 <script src="{{ asset('admin/assets/bundles/c3.bundle.js') }}"></script>
 <script src="{{ asset('admin/assets/bundles/apexcharts.bundle.js') }}"></script>
-<script src="{{ asset('admin/assets/bundles/jvectormap.bundle.js') }}"></script>
+
 <script src="{{ asset('admin/assets/vendor/toastr/toastr.js') }}"></script>
 
 <!-- Datatable scripts -->
@@ -127,7 +129,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 

@@ -27,13 +27,15 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="cari_adi" style="color: #59c4bc">Cari Adı*</label>
-                                    <input type="text" class="form-control" id="cari_adi" name="cari_adi" required>
+                                    <select class="form-control" id="cari_adi" name="cari_adi" required>
+                                        <!-- Optionlar, JavaScript ile doldurulacak -->
+                                    </select>
                                     <span class="text-danger">{{ $errors->first('cari_adi') }}</span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="cari_adresi"style="color: #59c4bc">Cari Adresi*</label>
-                                    <input type="text" class="form-control" id="cari_adresi" name="cari_adresi" required>
+                                    <label for="cari_adresi" style="color: #59c4bc">Cari Adresi*</label>
+                                    <select class="form-control" name="cari_adresi" id="cari_adi"></select>
                                     <span class="text-danger">{{ $errors->first('cari_adresi') }}</span>
                                 </div>
                                 <div class="row">
@@ -48,10 +50,10 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="siparis_tarihi" style="color: #59c4bc">Seri No*</label>
-                                            <input type="number" class="form-control" id="siparis_tarihi"
-                                                name="siparis_tarihi" required>
-                                            <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                            <label for="seri_no" style="color: #59c4bc">Seri No*</label>
+                                            <input type="number" class="form-control" id="seri_no"
+                                                name="seri_no" required>
+                                            <span class="text-danger">{{ $errors->first('seri_no') }}</span>
                                         </div>
 
                                     </div>
@@ -60,10 +62,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="siparis_tarihi" style="color: #59c4bc">Teslimat Tarihi*</label>
-                                            <input type="date" class="form-control" id="siparis_tarihi"
-                                                name="siparis_tarihi" required>
-                                            <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                            <label for="teslim_tarihi" style="color: #59c4bc">Teslimat Tarihi*</label>
+                                            <input type="date" class="form-control" id="teslim_tarihi"
+                                                name="teslim_tarihi" required>
+                                            <span class="text-danger">{{ $errors->first('teslim_tarihi') }}</span>
                                         </div>
 
                                     </div>
@@ -86,7 +88,9 @@
                             <div class="col-md-5 col-sm-5 col-xs-12">
                                 <div class="form-group">
                                     <label for="cari_adı" style="color: #59c4bc">Projeler*</label>
-                                    <input type="text" class="form-control" id="cari_adı" name="cari_adı" required>
+                                    <select class="form-control" id="proje_adi" name="proje_adi" required>
+                                        <!-- Optionlar, JavaScript ile doldurulacak -->
+                                    </select>
                                     <span class="text-danger">{{ $errors->first('cari_adı') }}</span>
                                 </div>
                                 <div class="form-group">
@@ -257,4 +261,51 @@
 </script>
 
 <script src="{{ asset('admin/assets/js/pages/tables/jquery-datatable.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajcax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Sayfa yüklendiğinde cari listesini al ve dropdown'ı doldur
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
+
+            url: '{{ route('getCariList') }}',
+            type: 'GET',
+            success: function (response) {
+                var cariDropdown = $('#cari_adi');
+
+                // Tüm carileri dolaşarak dropdown'a ekleyin
+                $.each(response, function (index, cari) {
+                    cariDropdown.append($('<option>', {
+                        value: cari.id,
+                        text: cari.cari_adi
+
+                    }));
+
+                });
+                console.log(cariDropdown);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+        // Cari seçildiğinde diğer bilgileri doldur
+        $('#cari_adi').change(function () {
+            var cariId = $(this).val();
+
+            $.ajax({
+                url: '/get-cari-info/' + cariId,
+                type: 'GET',
+                success: function (response) {
+                    // Diğer bilgileri burada alıp ilgili alanlara yerleştirin
+                    $('#cari_adresi').val(response.cari_adresi);
+                    // Diğer alanları da ekleyebilirsiniz
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
 @endsection

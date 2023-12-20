@@ -142,7 +142,20 @@ class CariController extends Controller
         return redirect()->route('caris.index')
             ->with('success', 'Cari başarıyla silindi.');
     }
+    public function getCariList()
+    {
+        $caris =Cari::all();
 
+        $cariList=$caris->map(function($cari){
+            return [
+                'id'=>$cari->id,
+                'cari_adi'=>$cari->cari_id,
+                'cari_adresi'=>$cari->cari_adresi,
+
+            ];
+            return response()->json($cariList);
+        });
+    }
 
 
 
