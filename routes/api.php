@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// routes/web.php veya routes/api.php
+
+
+
+Route::get('/get-cari-list', [CariController::class, 'getCariList']);
+Route::get('/get-cari-info/{id}', [CariController::class, 'getCariInfo']);

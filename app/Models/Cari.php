@@ -9,6 +9,6 @@ class Cari extends Model
 {
 
     protected $table='caris';
-
+    protected $fillable = ['cari_adi', 'cari_adresi'];
 
 }

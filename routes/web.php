@@ -76,9 +76,6 @@ Route::prefix('urunhizmet')->group(function(){
     Route::get('/get-districts/{cityId}', [UrunController::class, 'getDistricts']);
 
 
-
-
-
 });
 //----------------------------------------------------------------------------------------------
 //Cari Route
@@ -89,9 +86,8 @@ Route::get('/caris/{id}', [CariController::class, 'show'])->name('caris.show');
 Route::get('/caris/{id}/edit', [CariController::class, 'edit'])->name('caris.edit');
 Route::post('/caris/update/{id}', [CariController::class, 'update'])->name('caris.update');
 Route::delete('/caris/{id}', [CariController::class, 'destroy'])->name('caris.destroy');
-Route::get('/get-cari-list',[CariController::class, 'getCariList'])->name('getCariList');
-Route::get('/get-cari-info/{id}',[CariController::class, 'getCariInfo'])->name('getCariInfo');
-
+Route::get('/get-cari-list', [CariController::class, 'getCariList'])->name('get.cari.list');
+Route::get('/get-cari-info/{id}', [CariController::class, 'getCariInfo'])->name('get.cari.info');
 
 //Finans page Route
 Route::prefix('finans')->group(function () {
@@ -139,7 +135,7 @@ Route::get('/forms/validation',[FormsController::class,'validation'])->name('for
 Route::get('pages/settings',[PagesController::class,'settings'])->name('pages.settings');
 Route::get('/profile',[PagesController::class,'profile'])->name('pages.profile');
 
-
+Route::post('/ajax/post',function(){})->name('ajax.post');
 
 
 

@@ -16,12 +16,11 @@
                     </a>
                 </div>
                 <div class="header">
-                    <h4> <strong>Yeni Alınan Sipariş</strong></h4>
+                    <h4><strong>Yeni Alınan Sipariş</strong></h4>
                 </div>
 
                 <div class="body">
-                    <table class="table table-striped table-hover dataTable js-exportable">
-                        <form action="{{ route('satis.asiparis.store') }}" method="POST"></form>
+                    <form action="{{ route('satis.asiparis.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -34,9 +33,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="cari_adresi" style="color: #59c4bc">Cari Adresi*</label>
-                                    <select class="form-control" name="cari_adresi" id="cari_adi"></select>
-                                    <span class="text-danger">{{ $errors->first('cari_adresi') }}</span>
+                                    <label for="cari_tipi" style="color: #59c4bc">Cari Tipi*</label>
+                                    <select class="form-control" name="cari_tipi" id="cari_tipi"></select>
+                                    <span class="text-danger">{{ $errors->first('cari_tipi') }}</span>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -51,11 +50,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="seri_no" style="color: #59c4bc">Seri No*</label>
-                                            <input type="number" class="form-control" id="seri_no"
-                                                name="seri_no" required>
+                                            <input type="number" class="form-control" id="seri_no" name="seri_no"
+                                                required>
                                             <span class="text-danger">{{ $errors->first('seri_no') }}</span>
                                         </div>
-
                                     </div>
                                 </div>
 
@@ -67,11 +65,10 @@
                                                 name="teslim_tarihi" required>
                                             <span class="text-danger">{{ $errors->first('teslim_tarihi') }}</span>
                                         </div>
-
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="siparis_tarihi" style="color: #59c4bc">Para Birimi*</label>
+                                            <label for="para_birimi" style="color: #59c4bc">Para Birimi*</label>
                                             <select class="form-control" name="para_birimi" id="para_birimi">
                                                 <option value="TL">₺-Türk Lirası</option>
                                                 <option value="DOLAR">$-Dolar</option>
@@ -80,29 +77,29 @@
                                             <span class="text-danger">{{ $errors->first('para_birimi') }}</span>
                                         </div>
                                     </div>
-
                                 </div>
 
                             </div>
                             <div class="col-md-1 col-sm-1 col-xs-12"></div>
                             <div class="col-md-5 col-sm-5 col-xs-12">
                                 <div class="form-group">
-                                    <label for="cari_adı" style="color: #59c4bc">Projeler*</label>
+                                    <label for="proje_adi" style="color: #59c4bc">Projeler*</label>
                                     <select class="form-control" id="proje_adi" name="proje_adi" required>
                                         <!-- Optionlar, JavaScript ile doldurulacak -->
                                     </select>
-                                    <span class="text-danger">{{ $errors->first('cari_adı') }}</span>
+                                    <span class="text-danger">{{ $errors->first('proje_adi') }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="cari_adı" style="color: #59c4bc">Etiketler*</label>
-                                    <input type="text" class="form-control" id="cari_adı" name="cari_adı" required>
-                                    <span class="text-danger">{{ $errors->first('cari_adı') }}</span>
+                                    <label for="etiket" style="color: #59c4bc">Etiketler*</label>
+                                    <input type="text" class="form-control" id="etiket" name="etiket" required>
+                                    <span class="text-danger">{{ $errors->first('etiket') }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="cari_adı" style="color: #59c4bc">Açıklama*</label>
-                                    <input type="text" class="form-control" id="cari_adı" name="cari_adı" required>
-                                    <span class="text-danger">{{ $errors->first('cari_adı') }}</span>
+                                    <label for="acikalama" style="color: #59c4bc">Açıklama*</label>
+                                    <input type="text" class="form-control" id="acikalama" name="acikalama" required>
+                                    <span class="text-danger">{{ $errors->first('acikalama') }}</span>
                                 </div>
+
                                 <div class="card">
                                     <div class="header">
                                         <h2>Limit file type <small>try to upload png or pdf only</small></h2>
@@ -114,11 +111,63 @@
 
                             </div>
                         </div>
-                    </table>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sayfa yüklendiğinde cari listesini al ve dropdown'ı doldur
+            fetchData();
+
+            // Cari seçildiğinde diğer bilgileri doldur
+            document.getElementById('cari_adi').addEventListener('change', function() {
+                var cariId = this.value;
+                fetchCariInfo(cariId);
+            });
+        });
+
+        function fetchData() {
+            fetch('{{ route('get.cari.list') }}', {
+                    method: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    var cariDropdown = document.getElementById('cari_adi');
+                    data.forEach(function(cari) {
+                        var option = document.createElement('option');
+                        option.value = cari.id;
+                        option.text = cari.cari_adi;
+                        cariDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        function fetchCariInfo(cariId) {
+            fetch('/get-cari-info/' + cariId, {
+                    method: 'GET',
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Diğer bilgileri burada alıp ilgili alanlara yerleştirin
+                    var cariTipiInput = document.getElementById('cari_tipi');
+                    cariTipiInput.value = data.cari_tipi;
+                    // Diğer alanları da ekleyebilirsiniz
+                })
+                .catch(error => console.error('Error fetching cari info:', error));
+        }
+    </script>
     <div class="row clearfix">
         <div class="col-lg-12">
             <div class="card">
@@ -257,55 +306,8 @@
     </div>
 @endsection
 @section('js')
-<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js">
-</script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js">
+    </script>
 
-<script src="{{ asset('admin/assets/js/pages/tables/jquery-datatable.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajcax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Sayfa yüklendiğinde cari listesini al ve dropdown'ı doldur
-        $.ajax({
-            headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
-
-            url: '{{ route('getCariList') }}',
-            type: 'GET',
-            success: function (response) {
-                var cariDropdown = $('#cari_adi');
-
-                // Tüm carileri dolaşarak dropdown'a ekleyin
-                $.each(response, function (index, cari) {
-                    cariDropdown.append($('<option>', {
-                        value: cari.id,
-                        text: cari.cari_adi
-
-                    }));
-
-                });
-                console.log(cariDropdown);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-
-        // Cari seçildiğinde diğer bilgileri doldur
-        $('#cari_adi').change(function () {
-            var cariId = $(this).val();
-
-            $.ajax({
-                url: '/get-cari-info/' + cariId,
-                type: 'GET',
-                success: function (response) {
-                    // Diğer bilgileri burada alıp ilgili alanlara yerleştirin
-                    $('#cari_adresi').val(response.cari_adresi);
-                    // Diğer alanları da ekleyebilirsiniz
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-        });
-    });
-</script>
+    <script src="{{ asset('admin/assets/js/pages/tables/jquery-datatable.js') }}"></script>
 @endsection

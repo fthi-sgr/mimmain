@@ -7,6 +7,7 @@
 @section('css')
     <!-- DataTables CSS ve JavaScript dosyaları -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 @endsection
 
 @section('content')
@@ -108,13 +109,13 @@
 
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                     </table>
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- Bootstrap JS ve jQuery -->
