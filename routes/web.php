@@ -22,6 +22,7 @@ use App\Http\Controllers\UrunController;
 use App\Http\Controllers\FinansController;
 use App\Http\Controllers\SiparisController;
 use App\Http\Controllers\CityDistrictController;
+use App\Http\Controllers\DropDownController;
 
 
 //Anasayfa
@@ -40,6 +41,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('authentication.l
 //ürünler ve hizmetler route--------------------------------------------------------
 //Route::get('/urunhizmet',[TumuController::class,'index'])->name('urunhizmet.index');
 
+//DropDown Route;
+Route::get('dropdown',[DropDownController::class, 'indexCari']);
 // Ürünler ve Hizmetler Page Route
 Route::prefix('urunhizmet')->group(function(){
     //Urunler Route
@@ -51,6 +54,10 @@ Route::prefix('urunhizmet')->group(function(){
     Route::post('/urun/update/{id}', [UrunController::class, 'updateUrun'])->name('urunhizmet.uruns.update');
     Route::delete('/urun/{id}', [UrunController::class, 'destroyUrun'])->name('urunhizmet.uruns.destroy');
     Route::get('/fetch-urun-adlari',[UrunController::class,'fetchUrunAdlari'])->name('urunhizmet.uruns.fetchUrunAdlari');
+    Route::get('/get-urun-list', [UrunController::class, 'getUrunList'])->name('get.urun.list');
+    Route::get('/get-urun-info/{id}', [UrunController::class, 'getUrunInfo'])->name('get.urun.info');
+
+
     // Hizmet Route
     Route::get('/hizmetlist',[UrunController::class,'indexHizmet'])->name('urunhizmet.hizmet.index');
     Route::get('/hizmet/create', [UrunController::class, 'createHizmet'])->name('urunhizmet.hizmet.create');

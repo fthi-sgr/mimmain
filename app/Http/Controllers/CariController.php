@@ -20,6 +20,7 @@ class CariController extends Controller
         return view('caris.index', compact('caris'));
     }
 
+
     public function create()
     {
 

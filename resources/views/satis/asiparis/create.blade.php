@@ -26,8 +26,16 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="cari_adi" style="color: #59c4bc">Cari Adı*</label>
-                                    <select class="form-control" id="cari_adi" name="cari_adi" required>
+                                    <select class="form-control" id="dropdown" name="cari_adi" required>
+                                        @if(isset($caris))
+                                        @dd('geldi');
+                                        @foreach ($caris as $cari)
+
+                                            <option value="{{$cari->id}}">{{$cari->cari_adi}}</option>
+                                        @endforeach
+                                        @endif
                                         <!-- Optionlar, JavaScript ile doldurulacak -->
+
                                     </select>
                                     <span class="text-danger">{{ $errors->first('cari_adi') }}</span>
                                 </div>
@@ -117,57 +125,6 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Sayfa yüklendiğinde cari listesini al ve dropdown'ı doldur
-            fetchData();
-
-            // Cari seçildiğinde diğer bilgileri doldur
-            document.getElementById('cari_adi').addEventListener('change', function() {
-                var cariId = this.value;
-                fetchCariInfo(cariId);
-            });
-        });
-
-        function fetchData() {
-            fetch('{{ route('get.cari.list') }}', {
-                    method: 'GET',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    var cariDropdown = document.getElementById('cari_adi');
-                    data.forEach(function(cari) {
-                        var option = document.createElement('option');
-                        option.value = cari.id;
-                        option.text = cari.cari_adi;
-                        cariDropdown.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error fetching data:', error));
-        }
-
-        function fetchCariInfo(cariId) {
-            fetch('/get-cari-info/' + cariId, {
-                    method: 'GET',
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Diğer bilgileri burada alıp ilgili alanlara yerleştirin
-                    var cariTipiInput = document.getElementById('cari_tipi');
-                    cariTipiInput.value = data.cari_tipi;
-                    // Diğer alanları da ekleyebilirsiniz
-                })
-                .catch(error => console.error('Error fetching cari info:', error));
-        }
-    </script>
     <div class="row clearfix">
         <div class="col-lg-12">
             <div class="card">
@@ -185,15 +142,25 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label for="cari_adı" style="color: #59c4bc">Ürün/hizmet*</label>
+                                        <label for="urun_adi" style="color: #59c4bc">Ürün/hizmet*</label>
                                         <div class="input-group input-group-flex ">
-                                            <input type="text" class="form-control">
+                                            <select class="form-control" id="urun_adi" name="urun_adi" required>
+                                                <!-- Optionlar, JavaScript ile doldurulacak -->
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="siparis_tarihi" style="color: #59c4bc">Miktar*</label>
+                                                <label for="miktar" style="color: #59c4bc">Miktar*</label>
+                                                <input type="number" class="form-control" id="miktar"
+                                                    name="siparis_tarihi" required>
+                                                <span class="text-danger">{{ $errors->first('miktar') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="birim_fiyat" style="color: #59c4bc">Birim Fiyat*</label>
                                                 <input type="number" class="form-control" id="siparis_tarihi"
                                                     name="siparis_tarihi" required>
                                                 <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
@@ -201,25 +168,17 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="siparis_tarihi" style="color: #59c4bc">Birim Fiyat*</label>
-                                                <input type="number" class="form-control" id="siparis_tarihi"
+                                                <label for="kdv" style="color: #59c4bc">KDV Oranı*</label>
+                                                <input type="number" class="form-control" id="kdv"
                                                     name="siparis_tarihi" required>
-                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="siparis_tarihi" style="color: #59c4bc">KDV Oranı*</label>
-                                                <input type="number" class="form-control" id="siparis_tarihi"
-                                                    name="siparis_tarihi" required>
-                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                                <span class="text-danger">{{ $errors->first('kdv') }}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label for="cari_adı" style="color: #59c4bc">Stok/depo*</label>
+                                        <label for="stok_adi" style="color: #59c4bc">Stok/depo*</label>
                                         <div class="input-group input-group-flex ">
                                             <input type="text" class="form-control">
                                         </div>
@@ -227,10 +186,10 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="siparis_tarihi" style="color: #59c4bc">Seri No*</label>
-                                                <input type="number" class="form-control" id="siparis_tarihi"
+                                                <label for="seri_no" style="color: #59c4bc">Seri No*</label>
+                                                <input type="number" class="form-control" id="seri_no"
                                                     name="siparis_tarihi" required>
-                                                <span class="text-danger">{{ $errors->first('siparis_tarihi') }}</span>
+                                                <span class="text-danger">{{ $errors->first('seri_no') }}</span>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -267,7 +226,66 @@
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Sayfa yüklendiğinde ürün listesini al ve dropdown'ı doldur
+                fetchData();
+
+                // Ürün seçildiğinde diğer bilgileri doldur
+                document.getElementById('urun_adi').addEventListener('change', function() {
+                    var urunId = this.value;
+                    fetchUrunInfo(urunId);
+                });
+            });
+
+            function fetchData() {
+                fetch('{{ route('get.urun.list') }}', {
+                        method: 'GET',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        var urunDropdown = document.getElementById('urun_adi');
+                        // Seçili öğeyi sıfırla
+                        urunDropdown.innerHTML = "";
+
+                        data.forEach(function(urun) {
+                            var option = document.createElement('option');
+                            option.value = urun.id;
+                            option.text = urun.urun_adi;
+                            urunDropdown.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            }
+
+            function fetchUrunInfo(urunId) {
+                fetch('/get-urun-info/' + urunId, {
+                        method: 'GET',
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Diğer bilgileri burada alıp ilgili alanlara yerleştirin
+                        // Örneğin, ürün adını bir başka alan içine yerleştirmek istiyorsanız:
+                        var urunAdiGoster = document.getElementById('urun_adi_goster');
+                        if (data.urun_adi) {
+                            urunAdiGoster.innerText = data.urun_adi;
+                        }
+                        // Diğer alanları da ekleyebilirsiniz
+                    })
+                    .catch(error => console.error('Error fetching urun info:', error));
+            }
+        </script>
     </div>
+
+
     <div class="row clearfix">
         <div class="col-lg-12">
             <div class="card">

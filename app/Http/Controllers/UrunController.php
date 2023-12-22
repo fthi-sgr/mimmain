@@ -113,6 +113,20 @@ class UrunController extends Controller
         $urunAdlari = Urun::pluck('urun_adi');
         return response()->json($urunAdlari);
     }
+    public function getUrunList()
+        {
+            $urun = Urun::all(); // Tüm cari verilerini çek
+
+            return response()->json($urun);
+        }
+
+        public function getUrunInfo($id)
+        {
+            $urun = Urun::find($id); // Belirli bir cari hakkında bilgileri çek
+
+            return response()->json($urun);
+        }
+
 
 //Hizmetler Crud Bölümü
     public function indexHizmet()
