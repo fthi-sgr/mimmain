@@ -26,9 +26,9 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="cari_adi" style="color: #59c4bc">Cari Adı*</label>
-                                    <select class="form-control" id="dropdown" name="cari_adi" required>
+                                    <select class="form-control" id="asiparis.create" name="cari_adi" required>
                                         @if(isset($caris))
-                                        @dd('geldi');
+
                                         @foreach ($caris as $cari)
 
                                             <option value="{{$cari->id}}">{{$cari->cari_adi}}</option>

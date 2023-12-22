@@ -9,6 +9,7 @@ class DropDownController extends Controller
 {
     public function indexCari(){
         $caris= Cari::get(['cari_adi','id']);
+        @dd('geldi');
         return view('asiparis.create', compact('caris'));
     }
 }
