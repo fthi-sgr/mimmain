@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+define('FATURA_SATIS',0);
+define('FATURA_ALIS',1);
+
+define('SİPARİS_SATIS',0);
+define('SIPARIS_ALIS',1);
+
+define('ISLEM_ODEME',0);
+define('ISLEM_TAHSİLAT',1);
 
 return [
 
@@ -168,6 +176,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+       
+        
+        
     ])->toArray(),
 
     /*
@@ -182,7 +194,10 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        // 'Example' => App\Facades\Example::class
+        
+
+        
     ])->toArray(),
 
 ];

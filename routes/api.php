@@ -21,5 +21,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::get('/get-cari-list', [CariController::class, 'getCariList']);
-Route::get('/get-cari-info/{id}', [CariController::class, 'getCariInfo']);

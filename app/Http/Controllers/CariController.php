@@ -29,37 +29,19 @@ class CariController extends Controller
 
     public function store(Request $request)
     {
+        $all = $request->except('_token');
 
-
-       try{
-
-        $cari = new Cari();
-        $cari->cari_kodu = $request->cari_kodu;
-        $cari->cari_turu = $request->cari_turu;
-        $cari->cari_adi = $request->cari_adi;
-        $cari->cari_tipi = $request->cari_tipi;
-        $cari->kisa_ad = $request->kisa_ad;
-        $cari->cari_etiket = $request->cari_etiket;
-        $cari->vergi_no = $request->vergi_no;
-        $cari->vergi_dairesi = $request->vergi_dairesi;
-        $cari->yetkili = $request->yetkili;
-        $cari->yetkili_tel = $request->yetkili_tel;
-        $cari->email = $request->email;
-        $cari->vade_gunu = $request->vade_gunu;
-        $cari->iskonto = $request->iskonto;
-        $cari->referans = $request->referans;
-        $cari->aciklama = $request->aciklama;
-        $cari->save();
-
-
-
-        return redirect()->route('caris.index');
-    }catch(\Exception $e){
-        dd($e->getMessage());
-
-        return redirect()->back()->with('error', 'Cari eklenirken bir hata oluştu.');
+        $create = Cari::create($all);
+        if($create)
+        {
+            return redirect()->back()->with('status','Müşteri Başarı İle Eklendi');
+        }
+        else
+        {
+            return redirect()->back()->with('status','Müşteri Eklenemdi');
+        }      
     }
-    }
+    
 
     public function show(Request $request)
     {
@@ -135,6 +117,7 @@ class CariController extends Controller
             // Hata durumunda hatayı göster ve geri dön
             return redirect()->back()->with('error', 'Cari güncellenirken bir hata oluştu.');
         }
+        
     }
 
     public function destroy(Cari $cari)

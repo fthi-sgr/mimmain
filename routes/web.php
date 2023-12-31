@@ -23,6 +23,9 @@ use App\Http\Controllers\FinansController;
 use App\Http\Controllers\SiparisController;
 use App\Http\Controllers\CityDistrictController;
 use App\Http\Controllers\DropDownController;
+use App\Http\Controllers\ElementsController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\FormsController;
 
 
 //Anasayfa
@@ -90,7 +93,7 @@ Route::get('/carilist', [CariController::class, 'index'])->name('caris.index');
 Route::get('/caris/create', [CariController::class, 'create'])->name('caris.create');
 Route::post('/cariadd', [CariController::class, 'store'])->name('caris.store');
 Route::get('/caris/{id}', [CariController::class, 'show'])->name('caris.show');
-Route::get('/caris/{id}/edit', [CariController::class, 'edit'])->name('caris.edit');
+Route::get('/caris/edit/{id}', [CariController::class, 'edit'])->name('caris.edit');
 Route::post('/caris/update/{id}', [CariController::class, 'update'])->name('caris.update');
 Route::delete('/caris/{id}', [CariController::class, 'destroy'])->name('caris.destroy');
 Route::get('/get-cari-list', [CariController::class, 'getCariList'])->name('get.cari.list');
@@ -122,6 +125,8 @@ Route::prefix('satis')->group(function(){
     Route::get('/asiparis/create',[SiparisController::class,'create'])->name('satis.asiparis.create');
     Route::Post('asiparis',[SiparisController::class,'store'])->name('satis.asiparis.store');
 });
+
+
 
 
 

@@ -33,7 +33,7 @@
                             </li>
                            
                             <li class="hidden-xs"><a href="javascript:void(0);" id="btnFullscreen" class="icon-menu"><i class="fa fa-arrows-alt"></i></a></li>
-                            <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
+                            <li><a href="{{route('authentication.logout')}}" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
                         </ul>
                     </div>
                 </div>

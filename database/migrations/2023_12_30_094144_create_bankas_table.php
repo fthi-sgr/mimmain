@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('banks', function (Blueprint $table) {
-            $table->id();
-            $table->string('banka_adi')->nullable();
+        Schema::create('bankas', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('banka_adi');
             $table->string('etiket')->nullable();
             $table->string('banka_sube')->nullable();
             $table->string('iban')->nullable();
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('banka_hesap_adi')->nullable();
             $table->string('hesap_no')->nullable();
             $table->string('aciklama')->nullable();
-
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banks');
+        Schema::dropIfExists('bankas');
     }
 };
